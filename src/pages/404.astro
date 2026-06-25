@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="404 — Page not found · Rick Ramirez" description="That page couldn't be found.">
+  <section class="notfound">
+    <div class="container">
+      <p class="section-label">// 404</p>
+      <h1 class="notfound-code">Signal lost.</h1>
+      <p class="notfound-text">
+        That page isn't here — it may have moved, or never existed. Let's get you
+        back to solid ground.
+      </p>
+      <div class="notfound-actions">
+        <a class="btn btn-primary" href="/">Back home</a>
+        <a class="btn btn-ghost" href="/articles">Read the writing</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+  }
+  .notfound-code {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .notfound-text {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+  .notfound-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+</style>

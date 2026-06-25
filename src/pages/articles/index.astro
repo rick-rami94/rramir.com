@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { readingTime } from '../../lib/reading.js';
 
 const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -47,7 +48,10 @@ const fmt = (d) =>
           <div class="article-list">
             {articles.map((a) => (
               <a class="article-row" href={`/articles/${a.slug}`}>
-                <span class="article-row-date">{fmt(a.data.date)}</span>
+                <span class="article-row-date">
+                  {fmt(a.data.date)}
+                  <span class="article-row-mins">{readingTime(a.body)} min read</span>
+                </span>
                 <span class="article-row-main">
                   <span class="article-row-title">{a.data.title}</span>
                   <span class="article-row-desc">{a.data.description}</span>

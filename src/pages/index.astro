@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { readingTime } from '../lib/reading.js';
 import {
   profile,
   credentials,
@@ -25,9 +26,23 @@ const fmtDate = (d) =>
     day: 'numeric',
     timeZone: 'UTC',
   });
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: 'https://rramir.com',
+  image: 'https://rramir.com/portrait.jpeg',
+  jobTitle: profile.role,
+  description: profile.tagline,
+  sameAs: [profile.linkedin, profile.github],
+  knowsAbout: standards,
+};
 ---
 
 <Base>
+  <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+
   <!-- Nav -->
   <header class="nav">
     <div class="container nav-inner">
@@ -328,7 +343,10 @@ const fmtDate = (d) =>
           <div class="article-list reveal">
             {articles.slice(0, 4).map((a) => (
               <a class="article-row" href={`/articles/${a.slug}`}>
-                <span class="article-row-date">{fmtDate(a.data.date)}</span>
+                <span class="article-row-date">
+                  {fmtDate(a.data.date)}
+                  <span class="article-row-mins">{readingTime(a.body)} min read</span>
+                </span>
                 <span class="article-row-main">
                   <span class="article-row-title">{a.data.title}</span>
                   <span class="article-row-desc">{a.data.description}</span>

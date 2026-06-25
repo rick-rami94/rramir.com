@@ -652,6 +652,13 @@ section { padding: 96px 0; }
   font-size: 0.8rem;
   color: var(--accent);
   padding-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.article-row-mins { color: var(--text-dim); font-size: 0.72rem; }
+@media (max-width: 600px) {
+  .article-row-date { flex-direction: row; gap: 8px; align-items: baseline; }
 }
 .article-row-main { display: flex; flex-direction: column; gap: 5px; flex: 1; }
 .article-row-title {
