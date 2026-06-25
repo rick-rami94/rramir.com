@@ -159,6 +159,7 @@ export const speaking = [
       'Original, passive (receive-only) RF research: the Neptune R900 AMR water meter — millions deployed across North American utilities — broadcasts real-time usage, meter ID, and status in cleartext over the 902–928 MHz band, with no encryption or authentication, readable with under $100 of SDR hardware. The talk reframes RF as part of the attack surface — telemetry that never reaches a firewall, EDR, or SIEM, yet can enable occupancy inference and pattern-of-life surveillance. Findings were reported through a CISA-coordinated disclosure.',
     tags: ['RF / SDR', 'AMR / AMI', 'Cyber-Physical Systems', 'Responsible Disclosure'],
     slides: '/cleartext-at-the-edge-secon-2026.pdf',
+    whitepaper: '/passive-rf-intelligence-915mhz-whitepaper.pdf',
     link: null,
     linkLabel: null,
   },
