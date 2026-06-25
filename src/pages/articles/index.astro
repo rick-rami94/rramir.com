@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const fmt = (d) =>
+  d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+
+<Base
+  title="Writing — Rick Ramirez"
+  description="Articles by Rick Ramirez on OT/ICS security, RF and cyber-physical systems, risk methodology, and security-first AI."
+>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="nav-logo" href="/">rramir<span class="dot">.</span>com</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/#speaking">Speaking</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="article-index">
+    <div class="container container-narrow">
+      <p class="section-label">// writing</p>
+      <h1 class="section-title">Writing</h1>
+      <p class="section-lead">
+        Notes on OT/ICS security, RF and cyber-physical systems, risk methodology,
+        and security-first AI.
+      </p>
+
+      {
+        articles.length === 0 ? (
+          <p class="article-empty">Articles coming soon.</p>
+        ) : (
+          <div class="article-list">
+            {articles.map((a) => (
+              <a class="article-row" href={`/articles/${a.slug}`}>
+                <span class="article-row-date">{fmt(a.data.date)}</span>
+                <span class="article-row-main">
+                  <span class="article-row-title">{a.data.title}</span>
+                  <span class="article-row-desc">{a.data.description}</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Base>

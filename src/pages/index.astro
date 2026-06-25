@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
 import {
   profile,
   credentials,
@@ -13,6 +14,17 @@ import {
   speaking,
   services,
 } from '../data/site.js';
+
+const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const fmtDate = (d) =>
+  d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
 ---
 
 <Base>
@@ -25,6 +37,7 @@ import {
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
+          {articles.length > 0 && <li><a href="#writing">Writing</a></li>}
           <li><a href="#services">Consulting</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -288,6 +301,39 @@ import {
       }
     </div>
   </section>
+
+  <!-- Writing -->
+  {
+    articles.length > 0 && (
+      <section id="writing">
+        <div class="container">
+          <p class="section-label reveal">// writing</p>
+          <h2 class="section-title reveal">Writing</h2>
+          <p class="section-lead reveal">
+            Notes on OT/ICS security, RF and cyber-physical systems, risk
+            methodology, and security-first AI.
+          </p>
+          <div class="article-list reveal">
+            {articles.slice(0, 4).map((a) => (
+              <a class="article-row" href={`/articles/${a.slug}`}>
+                <span class="article-row-date">{fmtDate(a.data.date)}</span>
+                <span class="article-row-main">
+                  <span class="article-row-title">{a.data.title}</span>
+                  <span class="article-row-desc">{a.data.description}</span>
+                </span>
+                <span class="article-row-arrow">→</span>
+              </a>
+            ))}
+          </div>
+          {articles.length > 4 && (
+            <div class="services-cta reveal">
+              <a class="btn btn-ghost" href="/articles">All writing →</a>
+            </div>
+          )}
+        </div>
+      </section>
+    )
+  }
 
   <!-- Services / Consulting -->
   <section id="services">
