@@ -76,3 +76,11 @@ The MLOps inheritance — continuous integration, delivery, training, monitoring
 Put these together and the strategy writes itself: build the capability as a stack, deploy an agent whose safety lives in the surrounding system, keep humans in the loop at the consequential decisions, give it a real manager, and hold it to standard with continuous evaluation. Start in recommendation mode and **earn autonomy incrementally** as trust and accuracy compound.
 
 The goal isn't to do today's work faster. It's to build an operating model where autonomous systems are designed, managed, and governed as a normal part of how the enterprise runs — ambitious in where you point it, disciplined in how you control it.
+
+---
+
+*This is the second of a three-part series on enterprise agentic AI:*
+
+1. [Choosing Where to Start](/articles/agentic-ai-enterprise-where-to-start) — the strategy
+2. **A Builder's Playbook** — the implementation *(this article)*
+3. [Scaling Responsibly](/articles/scaling-agentic-ai-responsibly) — the governance
