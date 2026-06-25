@@ -6,17 +6,18 @@ export const profile = {
   tagline:
     'I assess and reduce cyber risk where it matters most — across IT, OT/ICS, and AI systems.',
   intro:
-    'Lead Product Security Engineer working on R&D surgical robotics, with a background in information security risk management (ISRM) and site-level risk assessment across the supply chain. I build practical, standards-aligned methods for measuring and reducing cyber risk — and increasingly, the AI tooling that makes that work scale.',
+    "A U.S. Marine Corps veteran turned cybersecurity leader. Today I'm Lead Product Security Engineer for the Ottava surgical robotics platform at Johnson & Johnson — after rising through enterprise, OT/ICS, and global supply-chain security roles. I build practical, standards-aligned methods for measuring and reducing cyber risk, and increasingly the AI tooling that makes that work scale.",
   email: 'ricardo.n.ramirez@outlook.com',
   github: 'https://github.com/rick-rami94',
   githubHandle: 'rick-rami94',
   linkedin: 'https://www.linkedin.com/in/rickramir',
   linkedinHandle: 'rickramir',
-  location: 'United States',
+  location: 'New York City Metropolitan Area',
 };
 
 export const credentials = [
-  { label: 'Speaker · SECON 2026', sub: 'New Jersey' },
+  { label: 'Speaker · SECON 2026', sub: 'New Jersey', icon: 'mic' },
+  { label: 'U.S. Marine Corps', sub: 'Veteran', icon: 'award' },
 ];
 
 // Cloudflare Web Analytics — paste the beacon token from
@@ -43,22 +44,49 @@ export const focusAreas = [
 
 export const experience = [
   {
-    role: 'Lead Product Security Engineer — R&D Surgical Robotics',
-    org: 'Johnson & Johnson · Ottava Surgical Robotics',
-    period: 'Current',
-    points: [
-      'Product security for the Ottava R&D surgical robotics platform, embedding security across the device development lifecycle.',
-      'Bridges regulated medical-device engineering with modern threat modeling and secure-by-design practice.',
+    org: 'Johnson & Johnson',
+    meta: 'New Jersey · 4+ years',
+    roles: [
+      {
+        role: 'Lead Product Security Engineer — MedTech R&D',
+        period: 'Aug 2025 – Present',
+        points: [
+          'Product security for the Ottava surgical robotics platform — embedding secure-by-design into next-generation surgical systems alongside R&D engineering.',
+          'Medical-device security across the lifecycle: FDA premarket cybersecurity guidance, SBOM, and threat modeling.',
+        ],
+      },
+      {
+        role: 'Senior Security Analyst — Global Pharmaceuticals Supply Chain Technology',
+        period: 'Aug 2023 – Aug 2025',
+        points: [
+          'Security and risk across global pharmaceutical supply-chain technology; built cross-functional risk programs bridging OT and enterprise security.',
+        ],
+      },
+      {
+        role: 'Senior Security Analyst — NA/LATAM Supply Chain Logistics, OT/ICS',
+        period: 'Aug 2022 – Sep 2023',
+        points: [
+          'Site-level OT/ICS cyber risk assessment across NA/LATAM logistics — the work that shaped my site cybersecurity risk methodology.',
+        ],
+      },
+      {
+        role: 'IT Security Analyst — Customer Experience',
+        period: 'Nov 2021 – Aug 2022',
+        points: [],
+      },
     ],
   },
   {
-    role: 'Information Security Risk Management (ISRM)',
-    org: 'Johnson & Johnson · Innovative Medicine Supply Chain',
-    period: 'Prior',
-    points: [
-      'Developed a site-level cybersecurity risk assessment framework spanning six domains: IT, OT, physical security, third-party, GRC, and resilience.',
-      'Quantified residual risk by combining inherent risk with control maturity, referencing NIST SP 800-30, ISA/IEC 62443, and NIST CSF.',
-      'Now repurposing that methodology as an independent consulting practice and assessment tool.',
+    org: 'U.S. Marine Corps',
+    meta: 'Veteran',
+    roles: [
+      {
+        role: 'Communications Technician',
+        period: 'May 2013 – May 2021',
+        points: [
+          'Eight years in telecommunications and secure communications — the foundation of my security career.',
+        ],
+      },
     ],
   },
 ];
@@ -70,8 +98,54 @@ export const standards = [
   'Threat Modeling',
   'OT / ICS Security',
   'Product Security',
+  'SBOM',
+  'FDA Premarket Cybersecurity',
   'Multi-Agent AI Systems',
   'Python',
+];
+
+export const certifications = [
+  {
+    group: 'Industrial / OT-ICS Security',
+    items: [
+      { name: 'GICSP', issuer: 'GIAC', note: '2025–2029' },
+      { name: 'ICS Cybersecurity Analysis & Evaluation (401v)', issuer: 'CISA', note: '' },
+      { name: 'SEC556: IoT Penetration Testing', issuer: 'SANS', note: '2026' },
+    ],
+  },
+  {
+    group: 'Security Foundations',
+    items: [
+      { name: 'CISSP', issuer: 'ISC²', note: 'In progress' },
+      { name: 'Security+ (ce)', issuer: 'CompTIA', note: '' },
+    ],
+  },
+  {
+    group: 'AI & Agentic Systems',
+    items: [
+      { name: 'Multi-AI Agent Systems with crewAI', issuer: 'DeepLearning.AI', note: '2026' },
+      { name: 'AI Security Essentials for Business Leaders', issuer: 'SANS', note: '' },
+      { name: 'Model Context Protocol', issuer: 'Anthropic', note: '' },
+    ],
+  },
+];
+
+export const education = [
+  {
+    school: 'Western Governors University',
+    detail: 'B.S., IT Management',
+    period: '2023 – 2026',
+  },
+  {
+    school: 'Harvard University',
+    detail: 'Executive Education — Cybersecurity & Risk Management',
+    period: '2020',
+  },
+  {
+    school: 'MIT Sloan Executive Education',
+    detail: 'Implementing Agentic AI: Building Your Organizational Playbook',
+    period: '2026',
+  },
 ];
 
 export const projects = [

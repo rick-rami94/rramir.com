@@ -6,6 +6,8 @@ import {
   focusAreas,
   experience,
   standards,
+  certifications,
+  education,
   projects,
   services,
 } from '../data/site.js';
@@ -50,11 +52,19 @@ import {
           {
             credentials.map((c) => (
               <span class="cred">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                  <line x1="12" y1="19" x2="12" y2="23" />
-                </svg>
+                {c.icon === 'mic' && (
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                    <line x1="12" y1="19" x2="12" y2="23" />
+                  </svg>
+                )}
+                {c.icon === 'award' && (
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="8" r="6" />
+                    <path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5" />
+                  </svg>
+                )}
                 <strong>{c.label}</strong>
                 <em>{c.sub}</em>
               </span>
@@ -103,20 +113,82 @@ import {
     <div class="container">
       <p class="section-label reveal">// experience</p>
       <h2 class="section-title reveal">Where I've worked</h2>
-      <div class="reveal">
+      {
+        experience.map((co) => (
+          <div class="exp-co reveal">
+            <div class="exp-co-head">
+              <h3 class="exp-co-name">{co.org}</h3>
+              {co.meta && <span class="exp-co-meta">{co.meta}</span>}
+            </div>
+            <div class="exp-roles">
+              {co.roles.map((r) => (
+                <div class="exp-item">
+                  <div class="exp-head">
+                    <span class="exp-role">{r.role}</span>
+                    <span class="exp-period">{r.period}</span>
+                  </div>
+                  {r.points.length > 0 && (
+                    <ul class="exp-points">
+                      {r.points.map((p) => (
+                        <li>{p}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <div class="container">
+      <p class="section-label reveal">// certifications</p>
+      <h2 class="section-title reveal">Certifications</h2>
+      <div class="cert-groups">
         {
-          experience.map((e) => (
-            <div class="exp-item">
-              <div class="exp-head">
-                <span class="exp-role">{e.role}</span>
-                <span class="exp-period">{e.period}</span>
-              </div>
-              <div class="exp-org">{e.org}</div>
-              <ul class="exp-points">
-                {e.points.map((p) => (
-                  <li>{p}</li>
+          certifications.map((g) => (
+            <div class="cert-group reveal">
+              <h3 class="cert-group-title">{g.group}</h3>
+              <div class="cert-list">
+                {g.items.map((c) => (
+                  <div class="cert-card">
+                    <div class="cert-top">
+                      <span class="cert-name">{c.name}</span>
+                      {c.note && (
+                        <span class={`cert-note${c.note === 'In progress' ? ' is-progress' : ''}`}>
+                          {c.note}
+                        </span>
+                      )}
+                    </div>
+                    <span class="cert-issuer">{c.issuer}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <div class="container">
+      <p class="section-label reveal">// education</p>
+      <h2 class="section-title reveal">Education</h2>
+      <div class="edu-list reveal">
+        {
+          education.map((e) => (
+            <div class="edu-item">
+              <div class="edu-main">
+                <span class="edu-school">{e.school}</span>
+                <span class="edu-detail">{e.detail}</span>
+              </div>
+              <span class="edu-period">{e.period}</span>
             </div>
           ))
         }
