@@ -7,7 +7,7 @@ export const profile = {
     'I assess and reduce cyber risk where it matters most — across IT, OT/ICS, and AI systems.',
   intro:
     'Lead Product Security Engineer working on R&D surgical robotics, with a background in information security risk management (ISRM) and site-level risk assessment across the supply chain. I build practical, standards-aligned methods for measuring and reducing cyber risk — and increasingly, the AI tooling that makes that work scale.',
-  email: 'rickramirez94@gmail.com',
+  email: 'ricardo.n.ramirez@outlook.com',
   github: 'https://github.com/rick-rami94',
   githubHandle: 'rick-rami94',
   linkedin: 'https://www.linkedin.com/in/rickramir',
