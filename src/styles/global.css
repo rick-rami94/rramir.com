@@ -567,6 +567,65 @@ section { padding: 96px 0; }
   pointer-events: none;
 }
 
+/* ---------- Speaking ---------- */
+.talk {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.talk::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(var(--accent), #38bdf8);
+}
+.talk-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.talk-head .proj-tag { margin-bottom: 0; }
+.talk-venue {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.talk-venue svg { color: var(--accent); }
+.talk-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  color: var(--navy);
+  letter-spacing: -0.015em;
+}
+.talk-sub {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 6px 0 18px;
+}
+.talk-blurb {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 760px;
+  margin-bottom: 22px;
+}
+.talk-tags { margin-bottom: 0; }
+@media (max-width: 560px) {
+  .talk { padding: 28px 22px; }
+}
+
 /* ---------- Contact ---------- */
 .contact { text-align: center; }
 .contact .card {
