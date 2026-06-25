@@ -20,6 +20,8 @@ export const credentials = [
   { label: 'U.S. Marine Corps', sub: 'Veteran', icon: 'award' },
 ];
 
+export const languages = ['English', 'Spanish', 'German', 'French'];
+
 // Cloudflare Web Analytics — paste the beacon token from
 // dash.cloudflare.com → Analytics & Logs → Web Analytics → rramir.com.
 // Leave empty to disable the beacon entirely.
