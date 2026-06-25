@@ -195,12 +195,12 @@ export const projects = [
   },
   {
     name: 'offsec-orchestrator',
-    tag: 'Open Source · Releasing soon',
+    tag: 'Open Source',
     blurb:
       'A governed agent for authorized security testing: a dependency-free MCP stdio client, an engagement scope / rules-of-engagement gate (fail-closed), default-deny active tools, and a propose → approve → execute loop backed by an audit hash chain. 88% test coverage.',
     stack: ['Python', 'MCP', 'Governance', 'Fail-Closed'],
-    link: null,
-    linkLabel: 'Open-sourcing soon',
+    link: 'https://github.com/rick-rami94/offsec-orchestrator',
+    linkLabel: 'View on GitHub',
   },
 ];
 
