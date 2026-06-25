@@ -621,7 +621,12 @@ section { padding: 96px 0; }
   max-width: 760px;
   margin-bottom: 22px;
 }
-.talk-tags { margin-bottom: 0; }
+.talk-tags { margin-bottom: 24px; }
+.talk-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 @media (max-width: 560px) {
   .talk { padding: 28px 22px; }
 }
