@@ -23,7 +23,7 @@ export const credentials = [
 // dash.cloudflare.com → Analytics & Logs → Web Analytics → rramir.com.
 // Leave empty to disable the beacon entirely.
 export const analytics = {
-  cfBeaconToken: '',
+  cfBeaconToken: 'bb4b66d692d84a6eb8376bc024c50d1d',
 };
 
 export const focusAreas = [
