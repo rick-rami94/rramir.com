@@ -19,6 +19,13 @@ export const credentials = [
   { label: 'Speaker · SECON 2026', sub: 'New Jersey' },
 ];
 
+// Cloudflare Web Analytics — paste the beacon token from
+// dash.cloudflare.com → Analytics & Logs → Web Analytics → rramir.com.
+// Leave empty to disable the beacon entirely.
+export const analytics = {
+  cfBeaconToken: '',
+};
+
 export const focusAreas = [
   {
     title: 'OT / ICS Security',
