@@ -176,6 +176,15 @@ export const projects = [
     linkLabel: 'In development',
   },
   {
+    name: 'Secure Enterprise AI Reference Architecture',
+    tag: 'Open Source · Reference Architecture',
+    blurb:
+      'A vendor-neutral, principal-level reference architecture for a secure enterprise AI platform: a mandatory AI gateway with prompt-injection and sensitive-data guardrails, access-controlled RAG that filters retrieval by data classification, a multi-agent orchestration plane where every agent gets a short-lived on-behalf-of identity, and brokered tool/MCP execution with graded human-in-the-loop approval. Ships a STRIDE + MITRE ATLAS threat model, a controls-traceability matrix across eight frameworks, and hands-on policy-as-code and SIEM-detection artifacts.',
+    stack: ['AI/LLM Security', 'Secure RAG', 'Multi-Agent', 'OWASP LLM Top 10', 'NIST AI RMF'],
+    link: 'https://github.com/rick-rami94/secure-enterprise-ai-reference-architecture',
+    linkLabel: 'View on GitHub',
+  },
+  {
     name: 'multi-agent-orchestrator',
     tag: 'Open Source',
     blurb:
