@@ -119,13 +119,13 @@ export const certifications = [
     group: 'Security Foundations',
     items: [
       { name: 'CISSP', issuer: 'ISC²', note: 'In progress' },
-      { name: 'Security+ (ce)', issuer: 'CompTIA', note: '' },
+      { name: 'Security+ (ce)', issuer: 'CompTIA', note: '2020' },
+      { name: 'SecAI+', issuer: 'CompTIA', note: '2026' },
     ],
   },
   {
     group: 'AI & Agentic Systems',
     items: [
-      { name: 'SecAI+', issuer: 'CompTIA', note: '' },
       { name: 'Multi-AI Agent Systems with crewAI', issuer: 'DeepLearning.AI', note: '2026' },
       { name: 'AI Security Essentials for Business Leaders', issuer: 'SANS', note: '' },
       { name: 'Model Context Protocol', issuer: 'Anthropic', note: '' },
