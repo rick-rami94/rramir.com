@@ -125,6 +125,7 @@ export const certifications = [
   {
     group: 'AI & Agentic Systems',
     items: [
+      { name: 'SecAI+', issuer: 'CompTIA', note: '' },
       { name: 'Multi-AI Agent Systems with crewAI', issuer: 'DeepLearning.AI', note: '2026' },
       { name: 'AI Security Essentials for Business Leaders', issuer: 'SANS', note: '' },
       { name: 'Model Context Protocol', issuer: 'Anthropic', note: '' },
