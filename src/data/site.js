@@ -166,6 +166,26 @@ export const speaking = [
   },
 ];
 
+export const securingAI = {
+  title: 'Securing AI — A SecAI+ Study Series',
+  tagline:
+    'A study video series teaching the CompTIA SecAI+ (CY0-001) body of knowledge — security architecture for AI, mapped to the OWASP LLM Top 10, NIST AI RMF, and MITRE ATLAS.',
+  playlistId: 'PLIjcpVV71lAc',
+  playlistUrl: 'https://www.youtube.com/playlist?list=PLIjcpVV71lAc',
+  // Self-hosted poster (first video's thumbnail) so the facade loads NO external requests until play.
+  posterImage: '/securing-ai-poster.jpg',
+  // Set to a channel URL once the handle is claimed; falls back to the playlist link.
+  channelUrl: 'https://www.youtube.com/@RickCyberSec',
+  channelHandle: '@RickCyberSec',
+  // The four CompTIA SecAI+ domains by exam weight — the series' backbone.
+  domains: [
+    { name: 'Foundations of AI & ML', weight: '17%' },
+    { name: 'Securing AI Systems', weight: '40%' },
+    { name: 'AI-Assisted Security', weight: '24%' },
+    { name: 'AI Governance, Risk & Compliance', weight: '19%' },
+  ],
+};
+
 export const projects = [
   {
     name: 'Ohm AI',

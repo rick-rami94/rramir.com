@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import { securingAI, profile } from '../data/site.js';
+
+const channelUrl = securingAI.channelUrl;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: securingAI.title,
+  description: securingAI.tagline,
+  thumbnailUrl: new URL('/og.png', Astro.site).toString(),
+  uploadDate: '2026-07-01',
+  author: { '@type': 'Person', name: profile.name },
+  url: securingAI.playlistUrl,
+};
+---
+
+<Base
+  title={`${securingAI.title} — Rick Ramirez`}
+  description={securingAI.tagline}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="nav-logo" href="/">rramir<span class="dot">.</span>com</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/articles">Writing</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="securing-ai">
+    <div class="container container-narrow">
+      <p class="section-label">// video series</p>
+      <h1 class="section-title">{securingAI.title}</h1>
+      <p class="section-lead">{securingAI.tagline}</p>
+
+      <!-- Lite YouTube embed: no youtube.com requests until the visitor clicks play. -->
+      <div class="yt-frame reveal">
+        <button
+          class="lite-yt"
+          type="button"
+          data-playlist={securingAI.playlistId}
+          aria-label={`Play the playlist: ${securingAI.title}`}
+          style={`background-image:url(${securingAI.posterImage})`}
+        >
+          <span class="lite-yt-scrim" aria-hidden="true"></span>
+          <span class="lite-yt-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" focusable="false">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+          </span>
+          <span class="lite-yt-hint">Loads YouTube only when you press play</span>
+        </button>
+      </div>
+
+      <div class="yt-actions">
+        <a class="btn btn-primary" href={securingAI.playlistUrl} target="_blank" rel="noopener">
+          Watch on YouTube ↗
+        </a>
+        {channelUrl && (
+          <a class="btn btn-ghost" href={channelUrl} target="_blank" rel="noopener">
+            {securingAI.channelHandle ?? 'YouTube channel'} ↗
+          </a>
+        )}
+      </div>
+
+      <div class="sa-domains">
+        <p class="sa-domains-label">Mapped to the four SecAI+ domains</p>
+        <ul class="sa-domains-list">
+          {securingAI.domains.map((d) => (
+            <li class="sa-domain">
+              <span class="sa-domain-name">{d.name}</span>
+              <span class="sa-domain-weight mono">{d.weight}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <p class="sa-disclaimer">
+        Independent and unofficial — not affiliated with or endorsed by CompTIA.
+        SecAI+ and CY0-001 are trademarks of CompTIA.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© {new Date().getFullYear()} {profile.name}</span>
+      <div class="footer-links">
+        <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a href={profile.github} target="_blank" rel="noopener">GitHub</a>
+        <a href={`mailto:${profile.email}`}>Email</a>
+      </div>
+      <span class="mono">rramir.com</span>
+    </div>
+  </footer>
+
+  <script is:inline>
+    document.querySelectorAll('.lite-yt').forEach((el) => {
+      const load = () => {
+        const id = el.dataset.playlist;
+        const frame = el.parentElement;
+        const iframe = document.createElement('iframe');
+        iframe.src =
+          'https://www.youtube-nocookie.com/embed/videoseries?list=' +
+          id +
+          '&autoplay=1&rel=0';
+        iframe.title = el.getAttribute('aria-label') || 'YouTube playlist';
+        iframe.allow =
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        frame.replaceChildren(iframe);
+      };
+      el.addEventListener('click', load);
+    });
+  </script>
+</Base>

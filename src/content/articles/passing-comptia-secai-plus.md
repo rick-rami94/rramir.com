@@ -38,3 +38,7 @@ The performance-based questions are the part worth respecting. They push past "c
 The most useful thing SecAI+ did for me wasn't to teach me adversarial ML or AI governance — it was to confirm that those topics now belong to a *single, named discipline* with a defined scope. That sounds like a small thing. It isn't. A field matures when it gets a shared curriculum, a common vocabulary, and a credential that lets a hiring manager or a regulator point at something concrete. AI security is crossing that line right now, and it's a good time to be early to it.
 
 A certification is a small signal; the work is the proof. But the signal still matters — because the real shortage in this space isn't tools or frameworks. It's people who can hold both sides at once: security tradecraft on one hand, and an honest understanding of how AI systems actually fail on the other. SecAI+ is one way of saying *I'm working on that seam.* The rest is what you build there.
+
+---
+
+*I'm turning the SecAI+ body of knowledge into a free video series — [Securing AI](/securing-ai), security architecture for AI mapped to the OWASP LLM Top 10, NIST AI RMF, and MITRE ATLAS.*
