@@ -29,14 +29,31 @@ const fmtDate = (d) =>
 
 const personJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: profile.name,
-  url: 'https://rramir.com',
-  image: 'https://rramir.com/portrait.jpeg',
-  jobTitle: profile.role,
-  description: profile.tagline,
-  sameAs: [profile.linkedin, profile.github],
-  knowsAbout: standards,
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://rramir.com/#website',
+      url: 'https://rramir.com/',
+      name: 'Rick Ramirez',
+      description:
+        'Security engineer and cybersecurity risk consultant — OT/ICS site risk, IEC 62443 / NIST CSF, and security-first AI.',
+      inLanguage: 'en-US',
+      publisher: { '@id': 'https://rramir.com/#person' },
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://rramir.com/#person',
+      name: profile.name,
+      url: 'https://rramir.com',
+      image: 'https://rramir.com/portrait.jpeg',
+      jobTitle: profile.role,
+      description: profile.tagline,
+      email: `mailto:${profile.email}`,
+      address: { '@type': 'PostalAddress', addressLocality: profile.location },
+      sameAs: [profile.linkedin, profile.github],
+      knowsAbout: standards,
+    },
+  ],
 };
 ---
 
@@ -108,8 +125,10 @@ const personJsonLd = {
           src="/portrait.jpeg"
           width="400"
           height="400"
-          alt={`Portrait of ${profile.name}`}
+          alt={`Portrait of ${profile.name}, security engineer and cybersecurity risk consultant`}
           loading="eager"
+          fetchpriority="high"
+          decoding="async"
         />
       </div>
     </div>

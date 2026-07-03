@@ -9,9 +9,13 @@ const jsonLd = {
   '@type': 'VideoObject',
   name: securingAI.title,
   description: securingAI.tagline,
-  thumbnailUrl: new URL('/og.png', Astro.site).toString(),
+  thumbnailUrl: new URL(securingAI.posterImage, Astro.site).toString(),
   uploadDate: '2026-07-01',
-  author: { '@type': 'Person', name: profile.name },
+  inLanguage: 'en-US',
+  author: { '@type': 'Person', name: profile.name, url: 'https://rramir.com' },
+  publisher: { '@type': 'Person', name: profile.name, url: 'https://rramir.com' },
+  contentUrl: securingAI.playlistUrl,
+  embedUrl: `https://www.youtube-nocookie.com/embed/videoseries?list=${securingAI.playlistId}`,
   url: securingAI.playlistUrl,
 };
 ---

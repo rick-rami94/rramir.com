@@ -5,5 +5,24 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://rramir.com',
   compressHTML: true,
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      changefreq: 'monthly',
+      priority: 0.7,
+      serialize(item) {
+        if (item.url === 'https://rramir.com/') {
+          item.priority = 1.0;
+          item.changefreq = 'weekly';
+        } else if (
+          item.url === 'https://rramir.com/securing-ai/' ||
+          item.url === 'https://rramir.com/articles/'
+        ) {
+          item.priority = 0.8;
+        } else if (item.url.includes('/articles/')) {
+          item.priority = 0.6;
+        }
+        return item;
+      },
+    }),
+  ],
 });

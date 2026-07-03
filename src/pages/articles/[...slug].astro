@@ -18,24 +18,48 @@ const dateStr = article.data.date.toLocaleDateString('en-US', {
 });
 const mins = readingTime(article.body);
 const canonical = new URL(`/articles/${article.slug}/`, Astro.site);
+const publishedIso = article.data.date.toISOString();
+const ogImageUrl = new URL('/og.png', Astro.site).href;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: article.data.title,
   description: article.data.description,
-  datePublished: article.data.date.toISOString().slice(0, 10),
+  datePublished: publishedIso.slice(0, 10),
+  dateModified: publishedIso.slice(0, 10),
+  inLanguage: 'en-US',
+  image: ogImageUrl,
   author: { '@type': 'Person', name: 'Rick Ramirez', url: 'https://rramir.com' },
+  publisher: {
+    '@type': 'Person',
+    name: 'Rick Ramirez',
+    url: 'https://rramir.com',
+    logo: { '@type': 'ImageObject', url: ogImageUrl },
+  },
   url: canonical.href,
   mainEntityOfPage: canonical.href,
   keywords: article.data.tags.join(', '),
+};
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://rramir.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Writing', item: 'https://rramir.com/articles/' },
+    { '@type': 'ListItem', position: 3, name: article.data.title, item: canonical.href },
+  ],
 };
 ---
 
 <Base
   title={`${article.data.title} — Rick Ramirez`}
   description={article.data.description}
+  ogType="article"
+  publishedTime={publishedIso}
+  tags={article.data.tags}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
 
   <header class="nav">
     <div class="container nav-inner">
