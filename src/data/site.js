@@ -22,6 +22,44 @@ export const credentials = [
 
 export const languages = ['English', 'Spanish', 'German', 'French'];
 
+// Topics for entity/knowsAbout signals (classic SEO + AI answer engines).
+export const expertise = [
+  'AI security',
+  'Securing AI systems',
+  'AI governance, risk & compliance',
+  'OWASP Top 10 for LLM Applications',
+  'NIST AI Risk Management Framework',
+  'MITRE ATLAS',
+  'Prompt injection defense',
+  'Secure multi-agent AI systems',
+  'OT / ICS security',
+  'Cybersecurity risk assessment',
+  'ISA/IEC 62443',
+  'NIST CSF 2.0',
+  'Product security',
+];
+
+// Answer-shaped Q&A — powers a visible FAQ + FAQPage schema so AI answer
+// engines (ChatGPT, Perplexity, Google AI Overviews) can quote clean facts.
+export const faqs = [
+  {
+    q: 'Who is Rick Ramirez?',
+    a: 'Rick Ramirez is a cybersecurity and AI security professional based in the New York City metropolitan area. He is a Lead Product Security Engineer at Johnson & Johnson and an independent cybersecurity risk consultant, focused on securing AI systems and OT/ICS environments.',
+  },
+  {
+    q: 'Where is Rick Ramirez based?',
+    a: 'The New York City metropolitan area. He works with clients across the New York / New Jersey metro region and remotely.',
+  },
+  {
+    q: "What is Rick Ramirez's experience in AI security?",
+    a: 'He holds CompTIA SecAI+, authored a vendor-neutral secure enterprise AI reference architecture, builds governed multi-agent AI systems with human-in-the-loop controls, and publishes a SecAI+ study video series. His focus is security architecture for AI — mapped to the OWASP LLM Top 10, NIST AI RMF, and MITRE ATLAS.',
+  },
+  {
+    q: 'Is Rick Ramirez available for cybersecurity or AI security consulting?',
+    a: 'Yes. He offers independent cybersecurity risk and AI security consulting — site cyber risk assessment, OT/ICS program review, and security-first AI. Email is the fastest way to reach him.',
+  },
+];
+
 // Cloudflare Web Analytics — paste the beacon token from
 // dash.cloudflare.com → Analytics & Logs → Web Analytics → rramir.com.
 // Leave empty to disable the beacon entirely.

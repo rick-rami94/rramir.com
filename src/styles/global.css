@@ -966,3 +966,37 @@ section { padding: 96px 0; }
   color: var(--text-dim);
   max-width: 60ch;
 }
+
+/* Hero location line (entity/location signal) */
+.hero-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+}
+.hero-location svg { color: var(--accent); flex-shrink: 0; }
+
+/* FAQ */
+.faq-list { margin-top: 12px; }
+.faq-item {
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-q {
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.faq-a {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 68ch;
+}

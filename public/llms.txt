@@ -1,0 +1,25 @@
+# Rick Ramirez
+
+> Cybersecurity and AI security professional based in the New York City metropolitan area. Lead Product Security Engineer at Johnson & Johnson and an independent cybersecurity risk consultant, focused on securing AI systems and OT/ICS environments.
+
+Rick Ramirez is a security engineer and cybersecurity risk consultant in the New York City metro area (serving the New York / New Jersey region and remote clients). He specializes in security architecture for AI — mapped to the OWASP Top 10 for LLM Applications, the NIST AI Risk Management Framework, and MITRE ATLAS — alongside OT/ICS site risk (ISA/IEC 62443, NIST CSF 2.0) and product security. He is a U.S. Marine Corps veteran and holds CompTIA SecAI+.
+
+## Expertise
+- AI security and securing AI systems (LLM/agent security, prompt-injection defense, secure RAG)
+- Governed multi-agent AI systems with human-in-the-loop controls and audit trails
+- AI governance, risk & compliance (OWASP LLM Top 10, NIST AI RMF, MITRE ATLAS, ISO 42001)
+- OT/ICS and site cyber risk assessment (ISA/IEC 62443, NIST CSF 2.0, NIST SP 800-30)
+- Product security and threat modeling for safety-critical systems
+
+## Key pages
+- [Home / profile](https://rramir.com/): about, focus areas, experience, consulting services, FAQ.
+- [Securing AI — a SecAI+ study video series](https://rramir.com/securing-ai): security architecture for AI, mapped to the four CompTIA SecAI+ domains.
+- [Writing](https://rramir.com/articles/): articles on AI security, OT/ICS, RF and cyber-physical systems, and risk methodology.
+
+## Consulting
+Available for independent cybersecurity risk and AI security consulting: site cyber risk assessment, OT/ICS program review, and security-first AI. Based in the New York City metropolitan area.
+
+## Contact
+- Email: ricardo.n.ramirez@outlook.com
+- LinkedIn: https://www.linkedin.com/in/rickramir
+- GitHub: https://github.com/rick-rami94

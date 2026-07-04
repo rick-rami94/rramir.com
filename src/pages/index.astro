@@ -9,6 +9,8 @@ import {
   focusAreas,
   experience,
   standards,
+  expertise,
+  faqs,
   certifications,
   education,
   projects,
@@ -47,11 +49,34 @@ const personJsonLd = {
       url: 'https://rramir.com',
       image: 'https://rramir.com/portrait.jpeg',
       jobTitle: profile.role,
-      description: profile.tagline,
+      description:
+        'Cybersecurity and AI security professional based in the New York City metropolitan area — securing AI systems, OT/ICS risk, and security-first AI.',
       email: `mailto:${profile.email}`,
-      address: { '@type': 'PostalAddress', addressLocality: profile.location },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'New York City',
+        addressRegion: 'NY',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'Place', name: 'New York City metropolitan area' },
+      hasOccupation: {
+        '@type': 'Occupation',
+        name: 'Cybersecurity & AI Security Consultant',
+        occupationLocation: { '@type': 'City', name: 'New York City' },
+      },
+      worksFor: { '@type': 'Organization', name: 'Johnson & Johnson' },
+      alumniOf: education.map((e) => ({ '@type': 'EducationalOrganization', name: e.school })),
       sameAs: [profile.linkedin, profile.github],
-      knowsAbout: standards,
+      knowsAbout: [...expertise, ...standards],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://rramir.com/#faq',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
     },
   ],
 };
@@ -87,6 +112,13 @@ const personJsonLd = {
           {profile.name}<span class="accent">.</span>
         </h1>
         <p class="hero-tagline">{profile.tagline}</p>
+        <p class="hero-location">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Cybersecurity &amp; AI security · New York City metropolitan area
+        </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Get in touch</a>
           <a class="btn btn-ghost" href={profile.linkedin} target="_blank" rel="noopener">
@@ -409,6 +441,24 @@ const personJsonLd = {
       <div class="services-cta reveal">
         <a class="btn btn-primary" href="#contact">Work with me →</a>
       </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container container-narrow">
+      <p class="section-label reveal">// faq</p>
+      <h2 class="section-title reveal">Frequently asked</h2>
+      <dl class="faq-list reveal">
+        {
+          faqs.map((f) => (
+            <div class="faq-item">
+              <dt class="faq-q">{f.q}</dt>
+              <dd class="faq-a">{f.a}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
   </section>
 
