@@ -2,9 +2,9 @@
 
 export const profile = {
   name: 'Rick Ramirez',
-  role: 'Security Engineer & Cybersecurity Risk Consultant',
+  role: 'Where cyber-physical security meets AI',
   tagline:
-    'I assess and reduce cyber risk where it matters most — across IT, OT/ICS, and AI systems.',
+    "For a decade I've secured systems where failure is physical — surgical robots, industrial control, the RF spectrum — and now I secure the AI being wired into them.",
   intro:
     "A U.S. Marine Corps veteran turned cybersecurity leader. Today I'm Lead Product Security Engineer for the Ottava surgical robotics platform at Johnson & Johnson — after rising through enterprise, OT/ICS, and global supply-chain security roles. I build practical, standards-aligned methods for measuring and reducing cyber risk, and increasingly the AI tooling that makes that work scale.",
   email: 'ricardo.n.ramirez@outlook.com',
@@ -16,11 +16,11 @@ export const profile = {
 };
 
 export const credentials = [
-  { label: 'Speaker · SECON 2026', sub: 'New Jersey', icon: 'mic' },
+  { label: 'Spoke at NJ SECON 2026', sub: 'Jun 2026', icon: 'mic' },
   { label: 'U.S. Marine Corps', sub: 'Veteran', icon: 'award' },
 ];
 
-export const languages = ['English', 'Spanish', 'German', 'French'];
+export const languages = ['English', 'Spanish'];
 
 // Topics for entity/knowsAbout signals (classic SEO + AI answer engines).
 export const expertise = [
@@ -44,7 +44,7 @@ export const expertise = [
 export const faqs = [
   {
     q: 'Who is Rick Ramirez?',
-    a: 'Rick Ramirez is a cybersecurity and AI security professional based in the New York City metropolitan area. He is a Lead Product Security Engineer at Johnson & Johnson and an independent cybersecurity risk consultant, focused on securing AI systems and OT/ICS environments.',
+    a: 'Rick Ramirez is a cybersecurity professional based in the New York City metropolitan area, working at the intersection of cyber-physical and AI security. He is a Lead Product Security Engineer at Johnson & Johnson and advises on securing OT/ICS, medical-device, and AI systems.',
   },
   {
     q: 'Where is Rick Ramirez based?',
@@ -55,8 +55,8 @@ export const faqs = [
     a: 'He holds CompTIA SecAI+, authored a vendor-neutral secure enterprise AI reference architecture, builds governed multi-agent AI systems with human-in-the-loop controls, and publishes a SecAI+ study video series. His focus is security architecture for AI — mapped to the OWASP LLM Top 10, NIST AI RMF, and MITRE ATLAS.',
   },
   {
-    q: 'Is Rick Ramirez available for cybersecurity or AI security consulting?',
-    a: 'Yes. He offers independent cybersecurity risk and AI security consulting — site cyber risk assessment, OT/ICS program review, and security-first AI. Email is the fastest way to reach him.',
+    q: 'Is Rick Ramirez available for advisory or consulting engagements?',
+    a: 'Yes — for select advisory and consulting engagements in cyber-physical and AI security, such as cyber risk assessment and OT/ICS program review. Email is the fastest way to reach him.',
   },
 ];
 
@@ -199,8 +199,10 @@ export const speaking = [
     tags: ['RF / SDR', 'AMR / AMI', 'Cyber-Physical Systems', 'Responsible Disclosure'],
     slides: '/cleartext-at-the-edge-secon-2026.pdf',
     whitepaper: '/passive-rf-intelligence-915mhz-whitepaper.pdf',
+    // Recording placeholder — set `link` to the talk video URL when available and
+    // a "Watch the talk ↗" button appears automatically.
     link: null,
-    linkLabel: null,
+    linkLabel: 'Watch the talk',
   },
 ];
 
@@ -227,12 +229,12 @@ export const securingAI = {
 export const projects = [
   {
     name: 'Ohm AI',
-    tag: 'Flagship · Consulting Tool',
+    tag: 'Flagship · Platform',
     blurb:
       'A local-first, multi-agent OT/ICS cybersecurity assessment platform. Ingests site evidence — network diagrams, asset inventories, firewall/ACL configs, vuln scans, and policies — then evaluates against IEC 62443 and NIST CSF 2.0 to produce scores, a report, and a prioritized remediation roadmap. Strictly local: no client data leaves the machine.',
     stack: ['Python', 'Local LLMs', 'Multi-Agent', 'IEC 62443', 'NIST CSF 2.0'],
     link: null,
-    linkLabel: 'In development',
+    linkLabel: 'Early access',
   },
   {
     name: 'Secure Enterprise AI Reference Architecture',

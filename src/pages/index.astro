@@ -38,7 +38,7 @@ const personJsonLd = {
       url: 'https://rramir.com/',
       name: 'Rick Ramirez',
       description:
-        'Security engineer and cybersecurity risk consultant — OT/ICS site risk, IEC 62443 / NIST CSF, and security-first AI.',
+        'Cyber-physical and AI security — securing surgical robotics, OT/ICS, and RF systems, and the AI being built into them.',
       inLanguage: 'en-US',
       publisher: { '@id': 'https://rramir.com/#person' },
     },
@@ -48,9 +48,9 @@ const personJsonLd = {
       name: profile.name,
       url: 'https://rramir.com',
       image: 'https://rramir.com/portrait.jpeg',
-      jobTitle: profile.role,
+      jobTitle: 'Cyber-Physical & AI Security Engineer',
       description:
-        'Cybersecurity and AI security professional based in the New York City metropolitan area — securing AI systems, OT/ICS risk, and security-first AI.',
+        'Cyber-physical and AI security professional based in the New York City metropolitan area — securing surgical robotics, OT/ICS, and RF systems, and the AI being built into them.',
       email: `mailto:${profile.email}`,
       address: {
         '@type': 'PostalAddress',
@@ -61,7 +61,7 @@ const personJsonLd = {
       areaServed: { '@type': 'Place', name: 'New York City metropolitan area' },
       hasOccupation: {
         '@type': 'Occupation',
-        name: 'Cybersecurity & AI Security Consultant',
+        name: 'Cyber-Physical & AI Security Engineer',
         occupationLocation: { '@type': 'City', name: 'New York City' },
       },
       worksFor: { '@type': 'Organization', name: 'Johnson & Johnson' },
@@ -92,11 +92,11 @@ const personJsonLd = {
       <nav>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
+          <li><a href="/securing-ai">Securing AI</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
           {articles.length > 0 && <li><a href="#writing">Writing</a></li>}
-          <li><a href="/securing-ai">Securing AI</a></li>
-          <li><a href="#services">Consulting</a></li>
+          <li><a href="#services">Advisory</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -117,10 +117,11 @@ const personJsonLd = {
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
             <circle cx="12" cy="10" r="3" />
           </svg>
-          Cybersecurity &amp; AI security · New York City metropolitan area
+          Cyber-physical &amp; AI security · New York City metropolitan area
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="/securing-ai">Securing AI ↗</a>
           <a class="btn btn-ghost" href={profile.linkedin} target="_blank" rel="noopener">
             LinkedIn ↗
           </a>
@@ -157,7 +158,7 @@ const personJsonLd = {
           src="/portrait.jpeg"
           width="400"
           height="400"
-          alt={`Portrait of ${profile.name}, security engineer and cybersecurity risk consultant`}
+          alt={`Portrait of ${profile.name}, cyber-physical and AI security engineer`}
           loading="eager"
           fetchpriority="high"
           decoding="async"
@@ -417,14 +418,15 @@ const personJsonLd = {
     )
   }
 
-  <!-- Services / Consulting -->
+  <!-- Advisory -->
   <section id="services">
     <div class="container">
-      <p class="section-label reveal">// consulting</p>
-      <h2 class="section-title reveal">Cybersecurity risk consulting</h2>
+      <p class="section-label reveal">// advisory</p>
+      <h2 class="section-title reveal">Advisory &amp; consulting</h2>
       <p class="section-lead reveal">
-        Independent, standards-aligned assessment that turns a sprawling environment
-        into a clear, prioritized view of cyber risk — and a plan to reduce it.
+        Standards-aligned assessment that turns a sprawling environment into a clear,
+        prioritized view of cyber risk — and a plan to reduce it. Available for select
+        advisory engagements alongside my full-time work.
       </p>
 
       <div class="grid grid-3">
@@ -439,7 +441,7 @@ const personJsonLd = {
       </div>
 
       <div class="services-cta reveal">
-        <a class="btn btn-primary" href="#contact">Work with me →</a>
+        <a class="btn btn-primary" href="#contact">Start a conversation →</a>
       </div>
     </div>
   </section>
@@ -468,8 +470,8 @@ const personJsonLd = {
       <div class="card reveal">
         <h2>Let's talk</h2>
         <p>
-          Open to consulting engagements and conversations about OT/ICS risk,
-          product security, and security-first AI. The fastest way to reach me is email.
+          Open to advisory conversations about cyber-physical risk, product security,
+          and securing AI systems. The fastest way to reach me is email.
         </p>
         <div class="contact-actions">
           <a class="btn btn-primary" href={`mailto:${profile.email}`}>{profile.email}</a>
