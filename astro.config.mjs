@@ -5,10 +5,14 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://rramir.com',
   compressHTML: true,
+  redirects: {
+    '/blog': '/articles',
+  },
   integrations: [
     sitemap({
       changefreq: 'monthly',
       priority: 0.7,
+      filter: (page) => !page.startsWith('https://rramir.com/blog'),
       serialize(item) {
         if (item.url === 'https://rramir.com/') {
           item.priority = 1.0;
