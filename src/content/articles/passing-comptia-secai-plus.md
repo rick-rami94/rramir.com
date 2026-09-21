@@ -6,7 +6,17 @@ tags: ["AI Security", "Certifications", "AI Governance", "Career"]
 draft: false
 ---
 
-CompTIA's **SecAI+** is brand new — exam **CY0-001**, launched **February 17, 2026** — so passing it this spring puts you in the first cohort to hold it. I sat for it because the work I do has been drifting toward AI security for a while: product security for safety-critical systems, agentic AI, and a recent vendor-neutral reference architecture for securing an enterprise AI platform. I didn't take the exam to learn the field. I took it to see whether the field had a *shared shape* yet — a common vocabulary, an agreed scope, the things a maturing discipline gets when it stops being a collection of blog posts. And here's the through-line I'd give anyone weighing it: **SecAI+ is, at its core, a security-architecture exam for AI systems.** It's far more a test of whether you can *design* protection around models — and reason fluently in the key risks and the frameworks that name them — than whether you can operate any particular tool. Here's the longer read.
+CompTIA's **SecAI+** is brand new — exam **CY0-001**, launched **February 17, 2026**. Passing it this spring puts you in the first cohort to hold it.
+
+I sat for it because my work has been drifting toward AI security for a while: product security for safety-critical systems, agentic AI, and a recent vendor-neutral reference architecture for securing an enterprise AI platform.
+
+I didn't take the exam to learn the field. I took it to see whether the field had a *shared shape* yet — a common vocabulary, an agreed scope, the things a maturing discipline gets when it stops being a collection of blog posts.
+
+Here's the through-line I'd give anyone weighing it: **SecAI+ is, at its core, a security-architecture exam for AI systems.**
+
+It's far more a test of whether you can *design* protection around models — and reason fluently in the key risks and the frameworks that name them — than whether you can operate any particular tool.
+
+Here's the longer read.
 
 ## What SecAI+ actually is
 

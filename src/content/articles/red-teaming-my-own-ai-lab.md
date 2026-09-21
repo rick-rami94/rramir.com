@@ -6,9 +6,19 @@ tags: ["AI Security", "Red Team", "MCP", "LLM Security", "Offensive Security"]
 draft: false
 ---
 
-I spent a weekend attacking my own AI lab. Everything below happened on a fully isolated network I own — an attacker box on one IP, deliberately-vulnerable targets and local models on another, nothing touching the internet. The point wasn't to find zero-days in toy apps. It was to build the muscle memory for how these systems actually fail: where an MCP server hands you the host, where an LLM agent can be talked out of its own guardrails, and where a structural hole survives only because a model happened to refuse.
+I spent a weekend attacking my own AI lab.
 
-Every finding is proven with a concrete request/response and mapped to its CWE, OWASP category, and a representative real-world CVE of the same class. You can [download the full report as a PDF](/ai-lab-red-team-report.pdf) or read it below.
+One request came back as root.
+
+A fake context update convinced an agent to hand over another user's bank data.
+
+Everything below happened on a fully isolated network I own. An attacker box on one IP, deliberately-vulnerable targets and local models on another. Nothing touched the internet.
+
+The point wasn't to find zero-days in toy apps. It was to build the muscle memory for how these systems actually fail.
+
+Where an MCP server hands you the host. Where an LLM agent can be talked out of its own guardrails. Where a structural hole survives only because a model happened to refuse.
+
+Every finding is proven with a concrete request and response, and mapped to its CWE, OWASP category, and a representative real-world CVE of the same class. You can [download the full report as a PDF](/ai-lab-red-team-report.pdf) or read it below.
 
 
 **Engagement:** Authorized self-red-team of my own deliberately-vulnerable lab targets

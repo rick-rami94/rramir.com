@@ -6,7 +6,13 @@ tags: ["RF Security", "Critical Infrastructure", "Privacy", "IoT Security"]
 draft: false
 ---
 
-Most security work assumes an attacker has to get *in* — past a firewall, through a credential, onto a network. But a large class of cyber-physical systems doesn't wait to be breached. They broadcast. And in one slice of unlicensed spectrum in North America, an estimated **200 million or more devices transmit their telemetry in cleartext** — no encryption, no authentication — to anyone within radio range.
+Most security work assumes an attacker has to get *in*. Past a firewall, through a credential, onto a network.
+
+But a large class of cyber-physical systems doesn't wait to be breached.
+
+They broadcast.
+
+In one slice of unlicensed spectrum in North America, an estimated **200 million or more devices transmit their telemetry in cleartext** — no encryption, no authentication — to anyone within radio range.
 
 I spent time characterizing exactly what's in that spectrum. This is the accessible version of the findings. The full methodology, device taxonomy, and citations are in the white paper:
 

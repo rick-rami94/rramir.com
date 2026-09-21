@@ -6,7 +6,13 @@ tags: ["Agentic AI", "Enterprise AI", "AI Strategy", "Digital Transformation"]
 draft: false
 ---
 
-Most agentic AI programs don't fail in production. They fail at the start — by building before deciding *what* to build, and *why now*. Before any architecture or tooling, you need a position you can defend to a colleague: what agentic AI is, where your organization actually sits on the AI curve, and which workflow you'll make the center of your learning. This is the *what*. Get it right and everything downstream gets easier.
+Most agentic AI programs don't fail in production. They fail at the start.
+
+They build before deciding *what* to build, and *why now*.
+
+Before any architecture or tooling, you need a position you can defend to a colleague: what agentic AI is, where your organization actually sits on the AI curve, and which workflow you'll make the center of your learning.
+
+This is the *what*. Get it right and everything downstream gets easier.
 
 ## Define it in your own words — and get everyone aligned
 

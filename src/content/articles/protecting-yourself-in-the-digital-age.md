@@ -6,69 +6,89 @@ tags: ["Cybersecurity", "Privacy", "Security Awareness", "Personal Security"]
 draft: false
 ---
 
-According to a study by the United Nations, cybercrime has increased over 600% since the beginning of the pandemic. [1] This increase is due to the growing number of people relying on the internet for daily tasks. The pandemic ignited a shift towards a more digital economy — people use the internet to work, study, or buy home necessities. So cybercriminals saw the opportunity to take advantage of these new, vulnerable users.
+Since the pandemic began, cybercrime is up more than 600%. [1]
 
-If you're interested in learning more about safeguarding your security and privacy while using the internet, this article is for you. I'll discuss the threats to personal cybersecurity, the attacks you can expect, and tips you can use to avoid becoming a victim.
+The reason is simple. When everyone moved online to work, study, and shop, a flood of new and vulnerable users came with them. Criminals went where the people went.
 
-## Digital Gold
+This is the guide I'd hand a friend who asked how to stay safe online. The threats, the attacks to expect, and the habits that actually protect you.
 
-In 2017, *The Economist* published an article titled "The world's most valuable resource is no longer oil, but data." [2] It explains how corporations utilize private information about their users to sell for millions of dollars. Most users are unaware of this trade-off — and that corporations like Facebook and Google harvest their data.
+## Your data is the target
 
-The value and importance of data lead cybercriminals to focus on attacking these digital assets. Attackers are also getting more sophisticated, developing better strategies to access some of our most private data. They target sensitive data including login credentials, banking information, smart home management devices, health records, and much more.
+In 2017, *The Economist* declared that the world's most valuable resource is no longer oil, but data. [2]
 
-## Attacks on Our Data
+Companies like Facebook and Google harvest it and sell it for millions, usually without users noticing the trade. That value is exactly why criminals want it too.
 
-Now that we understand what cybercriminals are after, it's essential to understand their attack methods. One of the most popular attacks on personal information is ransomware — the digital version of kidnapping. Cybercriminals use malicious software to encrypt their target's data, and only release it once the victim pays the ransom.
+They're after your login credentials, your banking information, your smart-home devices, your health records. The attacks keep getting more sophisticated because the payoff keeps growing.
 
-In the past year, we've seen how ransomware has had real-world consequences and affected millions. In September of this year, a ransomware attack on a hospital resulted in the death of a newborn. [3] The number of ransomware attacks will likely continue to grow if users don't protect themselves.
+## Attacks on your access
 
-## Attacks on Our Privacy
+The clearest example is ransomware — the digital version of kidnapping.
 
-Malware developers usually design their code to cause damage or steal data from their targets. One type of malware that exploits users' privacy is spyware, which tracks the user's activity on their device. These attacks record images from the device's camera, capture keystrokes, and may exfiltrate sensitive data.
+Malicious software encrypts your data, and you only get it back if you pay.
 
-The number of cyberattacks that use malware, including spyware, is rising annually. In 2009 the number of malware attacks was recorded at 12.4 million, ballooning to 812 million in 2018. [4] Of those attacks, 92% initiate through email. [5] This indicates a lack of cyber awareness among users.
+This isn't abstract. In September, a ransomware attack on a hospital was linked to the death of a newborn. [3] These attacks will keep growing until people defend against them.
 
-## How Does This Impact Me?
+## Attacks on your privacy
 
-Cybercriminals are aware that most computer users lack basic digital literacy, which makes users low-hanging fruit. An average of 60% of Americans answer simple digital literacy questions incorrectly. [6] To combat this, technology professionals must educate users on safe practices for navigating the digital world.
+Some malware doesn't lock you out. It watches.
 
-Whether you know the difference between HTTP and SMB or barely understand how to search on Google, these are the common types of threats you face in the digital world:
+Spyware tracks what you do on your device — recording your camera, capturing your keystrokes, quietly exfiltrating what it finds.
 
-- **Availability attacks:** When an attacker gains access to your accounts or devices, they can lock you out — eliminating the availability of your personal information. Ransomware falls into this category.
-- **Integrity attacks:** An attack on the integrity of your data can result in a loss of money and assets — for example, a criminal gaining access to your banking information to deplete your balance. Cybercriminals use password attacks to compromise the integrity of sensitive information.
-- **Confidentiality attacks:** Criminals may release private information about their targets — including government identification numbers, banking information, sensitive images, and more. Attackers use spyware and other malware like Trojan horses to exfiltrate sensitive data.
+And it's spreading fast. Malware attacks went from 12.4 million in 2009 to 812 million in 2018. [4] Ninety-two percent of them start with an email. [5] That gap is a lack of basic awareness, and it's fixable.
 
-## Practical Ways to Protect Yourself
+## Why this hits you specifically
+
+Criminals know most people lack basic digital literacy. That makes ordinary users the low-hanging fruit — an average of 60% of Americans answer simple digital-literacy questions incorrectly. [6]
+
+Whether you can explain the difference between HTTP and SMB or you're just here to check your email, you face the same three shapes of threat:
+
+- **Availability attacks.** The attacker locks you out of your own accounts or devices. Ransomware lives here.
+- **Integrity attacks.** The attacker changes your data or drains your money — for example, breaking into your banking to empty the balance. Password attacks are the usual way in.
+- **Confidentiality attacks.** The attacker leaks your private information — ID numbers, banking details, sensitive images. Spyware and Trojans do the stealing.
+
+## What to actually do
 
 ### Passwords are like underwear — change them often and don't let anyone see them
 
-Most users choose easy-to-remember passwords. This is convenient, but it also increases the risk of a breach. Cybercriminals use software that can "guess" thousands of password combinations in seconds. Security professionals recommend long, complex passwords of at least 12 characters, including uppercase letters, numbers, and special characters. Rotate your passwords regularly to reduce the risk of your accounts being breached.
+Easy passwords are convenient and dangerous. Software can guess thousands of combinations a second.
 
-But how are you going to remember all this? Instead of using our brains to store complex passwords, we should opt for password managers — software applications that store a user's credentials, secured by a single master password.
+Use long, complex passwords — at least 12 characters, with uppercase, numbers, and symbols. Rotate them.
 
-### Authentication... authentication... authentication
+You won't remember all of that, and you shouldn't try. Use a password manager. It stores every credential behind one strong master password, so your brain doesn't have to.
 
-Multifactor authentication (MFA) is a common way to combat password attacks. MFA requires an extra step during the authentication process, drawn from one of five types: something you are (biometric), something you have (token-based), something you know (password-based), something you do (behavior-based), and somewhere you are (geolocation-based). This added layer helps reduce the risk of a cybercriminal impersonating an authorized user. A standard tool is the Google Authenticator app, which provides a secure token to add a layer of defense during authentication.
+### Authentication, authentication, authentication
+
+Multifactor authentication (MFA) is the counter to password attacks.
+
+It adds a step drawn from one of five factors: something you are (biometric), something you have (token), something you know (password), something you do (behavior), and somewhere you are (geolocation).
+
+That extra layer makes it much harder for a criminal to impersonate you, even with your password. An app like Google Authenticator gives you a secure token to add that defense.
 
 ### Stranger danger
 
-A typical lesson we teach our children is not to take candy from strangers. The same lesson applies to the digital world: when interacting on the internet, keep a level of skepticism. Don't click links from untrusted sources — including friends and family.
+We teach kids not to take candy from strangers. The same rule holds online.
 
-When you click a link, you send a request to a server to provide the file that holds the requested information. That file is where attackers place malicious code to trigger a cyberattack, so only click trusted links.
+Don't click links from untrusted sources — and yes, that includes friends and family, whose accounts get compromised too. A link is a request to a server, and that's exactly where an attacker plants malicious code.
 
-Another common method is bundling malware with a "normal" application. A Trojan horse provides a function to the user — such as an image editor or keyboard app — while also containing malicious code that executes on the target system. Only install applications from trusted sources such as the Microsoft Store, Google Play Store, and Apple App Store. Installing an untrusted application (sideloading) can drastically increase the chances of a breach.
+Watch for malware bundled inside a "normal" app, too. A Trojan horse gives you something useful — an image editor, a keyboard — while running malicious code underneath. Install only from trusted sources like the Microsoft Store, Google Play Store, and Apple App Store. Sideloading from anywhere else sharply raises your risk.
 
 ### Free WiFi is not free
 
-Restaurants, malls, and coffee shops commonly provide free public WiFi. While convenient, it's important to be aware of the dangers. Attackers often set up fake public access points to monitor traffic on the network — which is why you should never use a public network to send sensitive information or conduct sensitive transactions. If using a public network is necessary, use a Virtual Private Network (VPN), available on your device's app store. A VPN encrypts your internet traffic, so even if an attacker monitors your activity, they can't decipher what you're doing.
+Restaurants, malls, and coffee shops hand out public WiFi. Attackers hand out fake versions of it to watch your traffic.
+
+So never send sensitive information or make sensitive transactions on a public network. If you have to use one, use a VPN. It encrypts your traffic, so even if someone is watching, they can't read what you're doing.
 
 ### Update your device
 
-Cybercriminals are constantly finding exploits, which requires software developers to patch their applications. I know how annoying constant updates are, but they're necessary. When we skip upgrading our devices, we leave doors open for cybercriminals to walk straight in. Make sure you've installed anti-malware software, too — these scan for common vulnerabilities and help keep your device up to date.
+Attackers keep finding exploits, which is why developers keep shipping patches.
 
-## Conclusion
+Updates are annoying. Skipping them leaves the door open. Install them, and run anti-malware while you're at it — it scans for common weaknesses and helps keep the device current.
 
-People are not always aware that we currently live in a world with two realities — one physical and the other digital. People already understand the rules needed to be safe in the physical world. It's up to security professionals to provide users with the knowledge and tools to protect themselves in the digital one.
+## The two worlds
+
+We live in two realities now, one physical and one digital.
+
+Most people already know the rules for staying safe in the physical one. The job for the rest of us in security is to give everyone the knowledge and tools to stay safe in the digital one too.
 
 ## References
 

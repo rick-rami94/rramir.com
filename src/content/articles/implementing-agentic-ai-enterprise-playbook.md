@@ -6,7 +6,11 @@ tags: ["Agentic AI", "Enterprise AI", "AI Implementation", "AI Governance"]
 draft: false
 ---
 
-The hard part of agentic AI is not the model. Frontier models are already capable enough for most enterprise workflows. What separates a real agent from a wished-for one is the set of implementation decisions you make *around* the model — what it can perceive, what it is allowed to do, where a human stays in the loop, who manages it, and how you hold it to standard once it is live.
+The hard part of agentic AI is not the model.
+
+Frontier models are already capable enough for most enterprise workflows.
+
+What separates a real agent from a wished-for one is the set of implementation decisions you make *around* the model — what it can perceive, what it is allowed to do, where a human stays in the loop, who manages it, and how you hold it to standard once it is live.
 
 I think the most useful reframing is this: an agent is not a smarter chatbot. It is a **unit of work that can be delegated, monitored, and governed.** That shift moves your people from task executors to managers of autonomous systems — and it means the questions that matter are operational and organizational, not just technical. Here is the playbook I'd use to take an enterprise agent from design to first production slice.
 
