@@ -16,7 +16,7 @@ export const profile = {
 };
 
 export const credentials = [
-  { label: 'Spoke at NJ SECON 2026', sub: 'Jun 2026', icon: 'mic' },
+  { label: 'Spoke at NJ SECON 2026', sub: 'Jun 2026', icon: 'mic', link: 'https://www.njsecon.org/' },
   { label: 'U.S. Marine Corps', sub: 'Veteran', icon: 'award' },
 ];
 

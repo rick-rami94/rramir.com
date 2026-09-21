@@ -206,6 +206,9 @@ section { padding: 96px 0; }
   padding: 7px 15px;
   max-width: 100%;
 }
+a.cred { text-decoration: none; cursor: pointer; transition: border-color 0.15s ease, background 0.15s ease; }
+a.cred:hover { border-color: var(--accent); background: var(--card-hover, var(--card)); }
+a.cred:hover strong { color: var(--accent); }
 .cred svg { color: var(--accent); flex-shrink: 0; }
 .cred strong { color: var(--navy); font-weight: 600; }
 .cred em {
