@@ -1,95 +1,84 @@
 ---
-title: "I Built a Water-Utility ICS and Took Control of It Without a Password"
-description: "I stood up a synthetic water-treatment control network — four PLCs, an HMI, a historian, a honeypot — then assessed it the governed way and attacked it the adversary way. Every controller accepted unauthenticated Modbus writes; I changed a live process register and flipped an actuator bit on all four, with zero credentials. Full report, findings mapped to CVSS, MITRE ATT&CK for ICS, and IEC 62443."
+title: "I Built a Water Treatment Plant. My AI Agents Took Control Without a Password."
+description: "I built a fully synthetic water-treatment control network and let an agentic security system assess it end to end. The agents took control of all four PLCs with no credentials. The interesting part isn't the exploitation — it's the governance around the autonomy, and what it says about securing agents that can reach physical processes."
 date: 2026-09-21
-tags: ["OT Security", "ICS", "Critical Infrastructure", "Red Team", "Modbus"]
+tags: ["OT Security", "AI Security", "ICS", "Agentic AI", "Critical Infrastructure"]
 draft: false
 ---
 
-Everything below happened inside a fully synthetic, offline lab I built and own. The client, the plant, and the findings are fictional. The point wasn't to break a toy — it was to build the muscle memory for how industrial control systems actually fail, and to run a single engagement end to end: model a real-looking water utility, assess it under governance, then prove the exposure the way an attacker would.
+![Architecture and threat model: governed agentic assessment, IT/OT firewall trust boundary, synthetic OT environment, and the unauthenticated-Modbus attack path](/ot-lab/ot-threat-model.png)
 
-The short version: **every programmable logic controller in the treatment process accepted commands from anyone who could reach it, with no authentication at all.** I didn't just detect that. I safely demonstrated it — changing a live process register and toggling an actuator command bit on all four field controllers, then restoring the original values.
+I built a water treatment plant in my lab.
 
-> **[→ Download the full assessment report (PDF)](/ot-ics-water-utility-assessment-report.pdf)** — a firm-grade deliverable: executive summary, methodology, six findings with CVSS vectors and MITRE ATT&CK for ICS mapping, an attack kill chain, and a phased remediation roadmap. The accessible version is below.
+Then my AI agents took control of all four PLCs without a password.
 
-**Engagement:** Governed assessment + red-team of a synthetic ICS I built
-**Environment:** OT network `172.30.0.0/24` — Purdue Levels 1–2, eight Docker containers
-**Date:** September 2026 · **Authorization:** Self-authorized, my own isolated lab
-**Overall risk rating:** Critical
+No stolen credentials. No zero-day. No sophisticated exploit chain.
 
----
+Just network access.
 
-## Why OT is different
+To be clear, this wasn't a real utility. I built a fully synthetic, offline environment with four PLCs controlling raw water intake, filtration, chemical dosing, and well operations, plus an HMI, a historian, and an IT/OT firewall.
 
-In IT security the loss condition is usually data — confidentiality, a breach, a leak. In operational technology, the loss condition is physical: a pump that shouldn't be running, a dosing setpoint that's wrong, a valve that opens. The systems that run water, power, and manufacturing were designed decades ago for reliability and isolation, not for a world where an attacker might already be on the network. Many of the protocols they speak have no concept of a password.
+Then I let an agentic security system assess it like a real engagement.
 
-I wanted a realistic sandbox to work in that truth — not a slide about it. So I built one.
+> **[→ Download the full technical report (PDF)](/ot-ics-water-utility-assessment-report.pdf)** — findings mapped to CVSS, MITRE ATT&CK for ICS, and IEC 62443, with the attack path and a phased remediation roadmap. The write-up is below.
 
-## What I built
+And the part I'm most proud of isn't the exploitation.
 
-A Dockerized water utility that behaves like the real thing:
+It's the governance around the autonomy.
 
-- **Four field controllers** speaking Modbus/TCP — raw-water intake, filtration, chemical dosing, and well control — each presenting as a distinct vendor device with its own register and coil maps.
-- **A multi-protocol process device / honeypot** answering S7comm, SNMP, BACnet, EtherNet/IP, FTP, and HTTP, posing as a Siemens S7-200.
-- **An operator HMI and a process historian** (a synthetic OSIsoft PI archive) on the supervisory layer.
-- **A synthetic IT/OT boundary firewall** enforcing the corporate-to-OT edge.
+Before an agent can touch a device, the system validates scope and fails closed if the target isn't authorized. Actions land in a tamper-evident audit trail. Findings are scored and mapped to security frameworks. The tooling drafts the remediation roadmap.
 
-The controllers are deliberately insecure the way real field PLCs are: Modbus on port 502, no authentication, no transport security. That's not a bug in my lab — it's an accurate model of a large installed base.
+Everything runs locally. Assessment evidence never leaves the machine.
 
-## Assessing it the governed way
+The goal isn't to automate the security engineer.
 
-Before attacking anything, I ran a governed assessment: a scope-gated, hash-chain-audited scan that refuses out-of-scope targets fail-closed and records every authorized action in a tamper-evident log *before* any tool touches a device. That discipline — provable scope, provable audit trail — is what separates a professional engagement from someone running tools on a network. It's the same governance layer I'm building into my consulting tooling.
+It's to automate the repeatable work around them while keeping human judgment where it matters.
 
-The assessment output was then fed through a deterministic NIST engine that maps the raw findings to CSF 2.0 and SP 800-53 controls — offline, no LLM, no data leaving the machine — to produce the report.
+Then came the adversary side.
 
-## The findings
+The agents discovered that every PLC accepted commands from anything that could reach it.
+
+They read live process values, wrote new ones, verified the changes, and manipulated actuator command bits across all four controllers. In a real process, those commands could represent opening a valve or starting a pump.
+
+Then they put everything back the way it was.
+
+No authentication required.
+
+![Attacker console showing WRITE CONFIRMED on all four PLCs; register 10 changed 172 to 1337 and a coil toggled and restored](/ot-lab/fig_modbus_attack.png)
+
+The supervisory side had the same shape of problem. The HMI and the historian answered over cleartext HTTP, no login, the historian even naming its own software version.
+
+![Captured process historian served over cleartext HTTP, identifying itself as OSIsoft PI Data Archive 2018 SP3](/ot-lab/fig_historian.png)
+
+Here's the full picture, the way I'd hand it to a client.
 
 | ID | Finding | Severity |
 |---|---|---|
-| OT-001 | Unauthenticated Modbus read/write on all four process PLCs | **Critical** |
-| OT-002 | Corporate-to-OT firewall boundary is effectively open | **High** |
-| OT-003 | No east-west segmentation within the OT network | **High** |
-| OT-004 | Operator HMI and historian served over cleartext HTTP | **Medium** |
-| OT-005 | Broad unauthenticated ICS protocol exposure | **Medium** |
-| OT-006 | EtherNet/IP CIP identity disclosure | **Low** |
+| OT-001 | Unauthenticated Modbus read/write on all four process PLCs | Critical |
+| OT-002 | Corporate-to-OT firewall boundary is effectively open | High |
+| OT-003 | No east-west segmentation within the OT network | High |
+| OT-004 | Operator HMI and historian served over cleartext HTTP | Medium |
+| OT-005 | Broad unauthenticated ICS protocol exposure | Medium |
+| OT-006 | EtherNet/IP CIP identity disclosure | Low |
 
-## Proof: control without a credential
+But Modbus isn't really the interesting part.
 
-The headline finding isn't that Modbus is exposed — scanners find that all day. It's that the exposure means *control*. For each controller I read a holding register, wrote a sentinel value, read it back to confirm the write took effect, then flipped a coil — an actuator command bit like a pump run or valve open — and restored everything to its original state.
+We already know it wasn't designed with modern authentication in mind. That isn't new.
 
-![Attacker console showing WRITE CONFIRMED on all four PLCs, register 10 changed 172 to 1337 and a coil toggled and restored](/ot-lab/fig_modbus_attack.png)
+The more interesting question is what happens when we give autonomous systems the ability to interact with environments where devices inherently trust the network.
 
-*The attacker console: unauthenticated writes confirmed on all four field controllers. In a production plant these same primitives open and close valves, start and stop pumps, and falsify the values operators trust.*
+That changes how I think about both OT security and agentic security.
 
-No credentials. No user interaction. Off-the-shelf tooling. The only barrier is reaching the device on the network — and the rest of the findings show how little stands in the way of that.
+The answer isn't just securing the model. It's controlling what the agent can reach, what tools it can use, what actions it's authorized to take, and where a human needs to remain in the loop.
 
-## Cleartext everything
+Least privilege. Defined trust boundaries. Scope enforcement. Segmentation. Auditability. Human approval for high-impact actions.
 
-The supervisory systems don't fare better. The operator HMI and the process historian are served over unauthenticated, cleartext HTTP. I pulled both without credentials; the historian cheerfully identifies its own software version and enumerates its interfaces — a gift for anyone choosing an exploit.
+The fundamentals still apply. The scale and speed are what's changing.
 
-![Captured process historian page served over cleartext HTTP, identifying itself as OSIsoft PI Data Archive 2018 SP3](/ot-lab/fig_historian.png)
+Legacy protocols don't have to mean legacy security architecture.
 
-*The process historian, retrieved over cleartext HTTP with no login. Version and interface disclosure like this is reconnaissance handed to the attacker for free.*
+And autonomous agents don't have to mean uncontrolled autonomy.
 
-## The boundary that wasn't
+> **[→ Read the full technical report (PDF)](/ot-ics-water-utility-assessment-report.pdf)**
 
-The most instructive finding is the one a scanner won't hand you: the IT/OT firewall. On paper it looks defensive — it explicitly denies telnet and Modbus inbound to the OT network. But a few rules later it contains a broad *permit all IP from the corporate subnet to the entire OT range*. The net effect is a boundary that blocks two ports and permits everything else. One compromised corporate workstation — the single most common real-world entry point — becomes a launch pad into the plant. Reading configuration with intent, not just running tools, is where the real risk lived.
-
-## What actually fixes this
-
-None of the remediation is exotic; it's discipline:
-
-- **Put a controls-aware boundary in front of the PLCs.** Deny Modbus by default, allow it only from named engineering hosts.
-- **Segment Level 1** into zones and conduits so one foothold can't reach every controller.
-- **Wrap the protocols that can't authenticate** behind an authenticating, logging proxy or a monitored jump host.
-- **Deploy OT-aware monitoring** — an unauthenticated write to a PLC is a screaming signal, and today nothing would see it.
-
-The full report has each finding written up with its CVSS vector, CWE, MITRE ATT&CK for ICS techniques, IEC 62443 mapping, and a phased 0–30 / 30–90 / 90–180 day roadmap.
-
-## Why do this at all
-
-Because reading about unauthenticated Modbus and *doing* it are different kinds of knowledge. Building the target, governing the assessment, and proving the impact — that's the loop that turns a concept into a capability, and a capability into something I can help an organization actually fix.
-
-> **[→ Read the full assessment report (PDF)](/ot-ics-water-utility-assessment-report.pdf)**
-
-*Synthetic lab, fictional client, offline throughout. No real utility, system, or data was involved.*
+Everything here was performed against my own synthetic environment. Fictional organization, completely offline, and no real utility, infrastructure, or operational data involved.
