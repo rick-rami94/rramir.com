@@ -16,6 +16,7 @@ export const profile = {
 };
 
 export const credentials = [
+  { label: 'Speaking at BSidesNYC 2026', sub: 'Oct 2026', icon: 'mic', link: 'https://bsidesnyc.org/' },
   { label: 'Spoke at NJ SECON 2026', sub: 'Jun 2026', icon: 'mic', link: 'https://www.njsecon.org/' },
   { label: 'U.S. Marine Corps', sub: 'Veteran', icon: 'award' },
 ];
@@ -195,7 +196,7 @@ export const speaking = [
     subtitle: 'A Neptune R900 Case Study in RF Telemetry Exposure',
     venue: 'SECON 2026 · New Jersey',
     blurb:
-      'Original, passive (receive-only) RF research: the Neptune R900 AMR water meter — millions deployed across North American utilities — broadcasts real-time usage, meter ID, and status in cleartext over the 902–928 MHz band, with no encryption or authentication, readable with under $100 of SDR hardware. The talk reframes RF as part of the attack surface — telemetry that never reaches a firewall, EDR, or SIEM, yet can enable occupancy inference and pattern-of-life surveillance. Findings were reported through a CISA-coordinated disclosure.',
+      'Original, passive (receive-only) RF research: the Neptune R900 AMR water meter — millions deployed across North American utilities — broadcasts real-time usage, meter ID, and status in cleartext over the 902–928 MHz band, with no encryption or authentication, readable with under $100 of SDR hardware. The talk reframes RF as part of the attack surface — telemetry that never reaches a firewall, EDR, or SIEM, yet can enable occupancy inference and pattern-of-life surveillance. Findings were reported to CISA, which closed the report without further action.',
     tags: ['RF / SDR', 'AMR / AMI', 'Cyber-Physical Systems', 'Responsible Disclosure'],
     slides: '/cleartext-at-the-edge-secon-2026.pdf',
     whitepaper: '/passive-rf-intelligence-915mhz-whitepaper.pdf',
