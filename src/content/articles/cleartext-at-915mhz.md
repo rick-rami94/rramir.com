@@ -16,7 +16,7 @@ In one slice of unlicensed spectrum in North America, an estimated **200 million
 
 I spent time characterizing exactly what's in that spectrum. This is the accessible version of the findings. The full methodology, device taxonomy, and citations are in the white paper:
 
-> **[→ Read the full white paper (PDF)](/passive-rf-intelligence-915mhz-whitepaper.pdf)** — *Passive RF Intelligence at 915 MHz: A Systematic Taxonomy of Cleartext Telemetry Across CISA Critical Infrastructure Sectors* (TLP:CLEAR). I also presented this research as **[Cleartext at the Edge](/#speaking)** at SECON 2026.
+> **[→ Read the full white paper (PDF)](/passive-rf-intelligence-915mhz-whitepaper.pdf)** — *Passive RF Intelligence at 915 MHz: A Systematic Taxonomy of Cleartext Telemetry Across CISA Critical Infrastructure Sectors* (TLP:CLEAR, Rev. 2, September 2026). I also presented this research as **[Cleartext at the Edge](/#speaking)** at SECON 2026.
 
 ## The band nobody watches
 
