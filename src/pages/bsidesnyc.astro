@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import { profile } from '../data/site.js';
+
+// Landing page linked from the final slide of the BSidesNYC 2026 talk.
+const talk = {
+  event: 'BSidesNYC 2026',
+  date: 'Oct 17, 2026',
+  title: 'Cleartext at the Edge',
+  subtitle: 'A Neptune R900 Case Study in RF Telemetry Exposure',
+  slides: { href: '/cleartext-at-the-edge-bsidesnyc-2026.pdf', meta: 'PDF · 28 slides · 1.7 MB' },
+  whitepaper: { href: '/passive-rf-intelligence-915mhz-whitepaper.pdf', meta: 'PDF · 10 pages · Rev. 3 · TLP:CLEAR' },
+};
+---
+
+<Base
+  title={`${talk.title} — ${talk.event} — Rick Ramirez`}
+  description={`Slides and white paper from "${talk.title}: ${talk.subtitle}" at ${talk.event}.`}
+>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="nav-logo" href="/">rramir<span class="dot">.</span>com</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/articles">Writing</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="securing-ai">
+    <div class="container container-narrow">
+      <p class="section-label">// {talk.event} · {talk.date}</p>
+      <h1 class="section-title">{talk.title}</h1>
+      <p class="section-lead">{talk.subtitle}</p>
+      <p class="talk-blurb">Thanks for coming to the talk. Take the material with you.</p>
+
+      <div class="dl-list">
+        <a class="dl-item talk" href={talk.slides.href} download>
+          <span class="dl-kicker mono">Slides</span>
+          <span class="dl-title">Cleartext at the Edge — {talk.event} deck</span>
+          <span class="dl-meta mono">{talk.slides.meta}</span>
+          <span class="btn btn-primary dl-btn">Download slides ↓</span>
+        </a>
+        <a class="dl-item talk" href={talk.whitepaper.href} download>
+          <span class="dl-kicker mono">White paper</span>
+          <span class="dl-title">Passive RF Intelligence at 915 MHz</span>
+          <span class="dl-meta mono">{talk.whitepaper.meta}</span>
+          <span class="btn btn-primary dl-btn">Download white paper ↓</span>
+        </a>
+      </div>
+
+      <p class="dl-more">
+        Want the short version? Read <a href="/articles/cleartext-at-915mhz/">Cleartext at 915 MHz</a>.
+        Questions or follow-up: <a href={`mailto:${profile.email}`}>{profile.email}</a> ·
+        <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© {new Date().getFullYear()} {profile.name}</span>
+      <div class="footer-links">
+        <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a href={profile.github} target="_blank" rel="noopener">GitHub</a>
+        <a href={`mailto:${profile.email}`}>Email</a>
+      </div>
+      <span class="mono">rramir.com</span>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  .dl-list { display: grid; gap: 16px; margin: 28px 0 32px; }
+  .dl-item {
+    display: grid;
+    gap: 6px;
+    padding: 28px 32px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease;
+  }
+  .dl-item:hover { border-color: var(--navy); }
+  .dl-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .dl-kicker { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+  .dl-title { font-family: var(--font-serif); font-weight: 600; font-size: 1.35rem; color: var(--navy); }
+  .dl-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); }
+  .dl-btn { justify-self: start; margin-top: 12px; }
+  .dl-more { color: var(--text-muted); font-size: 0.95rem; }
+  @media (max-width: 560px) {
+    .dl-item { padding: 24px 20px; }
+    .dl-btn { justify-self: stretch; text-align: center; }
+  }
+</style>
