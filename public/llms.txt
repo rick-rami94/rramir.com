@@ -20,6 +20,6 @@ Rick Ramirez is a security engineer and cybersecurity risk consultant in the New
 Available for independent cybersecurity risk and AI security consulting: site cyber risk assessment, OT/ICS program review, and security-first AI. Based in the New York City metropolitan area.
 
 ## Contact
-- Email: ricardo.n.ramirez@outlook.com
+- Email: rramir.securityresearch@protonmail.com
 - LinkedIn: https://www.linkedin.com/in/rickramir
 - GitHub: https://github.com/rick-rami94

@@ -6,16 +6,28 @@ import { profile } from '../data/site.js';
 const talk = {
   event: 'BSidesNYC 2026',
   date: 'Oct 17, 2026',
+  place: 'John Jay College · NYC',
   title: 'Cleartext at the Edge',
-  subtitle: 'A Neptune R900 Case Study in RF Telemetry Exposure',
-  slides: { href: '/cleartext-at-the-edge-bsidesnyc-2026.pdf', meta: 'PDF · 28 slides · 1.7 MB' },
-  whitepaper: { href: '/passive-rf-intelligence-915mhz-whitepaper.pdf', meta: 'PDF · 10 pages · Rev. 3 · TLP:CLEAR' },
+  subtitle: 'A Neptune R900 case study in RF telemetry exposure',
+  slides: { href: '/cleartext-at-the-edge-bsidesnyc-2026.pdf', meta: ['PDF', '28 slides', '1.7 MB'] },
+  whitepaper: { href: '/passive-rf-intelligence-915mhz-whitepaper.pdf', meta: ['PDF', '10 pages', 'Rev. 3', 'TLP:CLEAR'] },
 };
+
+const highlights = [
+  { src: '/bsidesnyc/slide-04.webp', label: '01', caption: 'The boundary is wherever the signal can be heard.' },
+  { src: '/bsidesnyc/slide-07.webp', label: '02', caption: 'The 902–928 MHz band, readable with $30–60 of SDR.' },
+  { src: '/bsidesnyc/slide-17.webp', label: '03', caption: 'From radio burst to named fields. No key needed.' },
+  { src: '/bsidesnyc/slide-20.webp', label: '04', caption: 'Everyone in range hears it, not just the utility.' },
+  { src: '/bsidesnyc/slide-23.webp', label: '05', caption: 'CVSS vs. context: why the score undersells it.' },
+  { src: '/bsidesnyc/slide-27.webp', label: '06', caption: 'RF is part of the attack surface.' },
+];
 ---
 
 <Base
   title={`${talk.title} — ${talk.event} — Rick Ramirez`}
   description={`Slides and white paper from "${talk.title}: ${talk.subtitle}" at ${talk.event}.`}
+  image="/bsidesnyc/og.jpg"
+  imageAlt="Cleartext at the Edge — title slide"
 >
   <header class="nav">
     <div class="container nav-inner">
@@ -30,33 +42,93 @@ const talk = {
     </div>
   </header>
 
-  <section class="securing-ai">
-    <div class="container container-narrow">
-      <p class="section-label">// {talk.event} · {talk.date}</p>
-      <h1 class="section-title">{talk.title}</h1>
-      <p class="section-lead">{talk.subtitle}</p>
-      <p class="talk-blurb">Thanks for coming to the talk. Take the material with you.</p>
+  <section class="bs-hero">
+    <div class="container bs-hero-inner">
+      <div class="bs-hero-copy">
+        <p class="bs-eyebrow">
+          <span class="bs-pill">{talk.event}</span>
+          <span>{talk.date} · {talk.place}</span>
+        </p>
+        <h1 class="bs-title">Cleartext at the <em>Edge</em></h1>
+        <p class="bs-sub">{talk.subtitle}</p>
+        <p class="bs-thanks">Thanks for coming. Take the material with you.</p>
+        <div class="bs-actions">
+          <a class="bs-btn bs-btn-amber" href={talk.slides.href} download>Download slides ↓</a>
+          <a class="bs-btn bs-btn-line" href={talk.whitepaper.href} download>Download white paper ↓</a>
+        </div>
+      </div>
+      <a class="bs-cover" href={talk.slides.href} download aria-label="Download the slides (PDF)">
+        <img src="/bsidesnyc/cover.webp" width="1600" height="900" alt="Title slide: Cleartext at the Edge, BSidesNYC 2026" fetchpriority="high" />
+      </a>
+    </div>
+    <p class="bs-freq" aria-hidden="true">RX 915.000 MHz · RECEIVE ONLY</p>
+  </section>
 
-      <div class="dl-list">
-        <a class="dl-item talk" href={talk.slides.href} download>
-          <span class="dl-kicker mono">Slides</span>
-          <span class="dl-title">Cleartext at the Edge — {talk.event} deck</span>
-          <span class="dl-meta mono">{talk.slides.meta}</span>
-          <span class="btn btn-primary dl-btn">Download slides ↓</span>
+  <section class="bs-section">
+    <div class="container">
+      <p class="section-label">// downloads</p>
+      <h2 class="bs-h2">Take it home</h2>
+
+      <div class="bs-downloads">
+        <a class="bs-dl" href={talk.slides.href} download>
+          <div class="bs-dl-thumb bs-dl-thumb-wide">
+            <img src="/bsidesnyc/cover.webp" width="1600" height="900" alt="" loading="lazy" />
+          </div>
+          <div class="bs-dl-body">
+            <span class="bs-kicker">Slides</span>
+            <span class="bs-dl-title">The full {talk.event} deck</span>
+            <span class="bs-dl-desc">All 28 slides, including the step-by-step decode demo and the CVSS breakdown.</span>
+            <span class="bs-meta">{talk.slides.meta.map((m) => <span>{m}</span>)}</span>
+            <span class="btn btn-primary bs-dl-btn">Download slides ↓</span>
+          </div>
         </a>
-        <a class="dl-item talk" href={talk.whitepaper.href} download>
-          <span class="dl-kicker mono">White paper</span>
-          <span class="dl-title">Passive RF Intelligence at 915 MHz</span>
-          <span class="dl-meta mono">{talk.whitepaper.meta}</span>
-          <span class="btn btn-primary dl-btn">Download white paper ↓</span>
+
+        <a class="bs-dl" href={talk.whitepaper.href} download>
+          <div class="bs-dl-thumb bs-dl-thumb-paper">
+            <img src="/bsidesnyc/whitepaper.webp" width="900" height="1165" alt="" loading="lazy" />
+          </div>
+          <div class="bs-dl-body">
+            <span class="bs-kicker">White paper</span>
+            <span class="bs-dl-title">Passive RF Intelligence at 915 MHz</span>
+            <span class="bs-dl-desc">A taxonomy of cleartext 915 MHz telemetry mapped to CISA's 16 critical infrastructure sectors, with CVSS v3.1 scores.</span>
+            <span class="bs-meta">{talk.whitepaper.meta.map((m) => <span>{m}</span>)}</span>
+            <span class="btn btn-primary bs-dl-btn">Download white paper ↓</span>
+          </div>
         </a>
       </div>
+    </div>
+  </section>
 
-      <p class="dl-more">
-        Want the short version? Read <a href="/articles/cleartext-at-915mhz/">Cleartext at 915 MHz</a>.
-        Questions or follow-up: <a href={`mailto:${profile.email}`}>{profile.email}</a> ·
-        <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
-      </p>
+  <section class="bs-section bs-section-alt">
+    <div class="container">
+      <p class="section-label">// from the talk</p>
+      <h2 class="bs-h2">Six slides worth keeping</h2>
+      <ol class="bs-grid">
+        {highlights.map((h) => (
+          <li class="bs-slide">
+            <a href={h.src} target="_blank" rel="noopener">
+              <img src={h.src} width="1200" height="675" alt={`Slide: ${h.caption}`} loading="lazy" />
+            </a>
+            <p><span class="bs-num">{h.label}</span>{h.caption}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="bs-section">
+    <div class="container bs-contact">
+      <div>
+        <h2 class="bs-h2">Keep the conversation going</h2>
+        <p class="bs-contact-lead">
+          Questions, corrections, or your own captures? Reach out.
+          Want the short version first? Read <a href="/articles/cleartext-at-915mhz/">Cleartext at 915 MHz</a>.
+        </p>
+      </div>
+      <div class="bs-contact-links">
+        <a class="btn btn-primary" href={`mailto:${profile.email}`}>Email me</a>
+        <a class="btn btn-ghost" href={profile.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
     </div>
   </section>
 
@@ -74,24 +146,218 @@ const talk = {
 </Base>
 
 <style>
-  .dl-list { display: grid; gap: 16px; margin: 28px 0 32px; }
-  .dl-item {
+  /* Deck palette: deep teal-navy ground, amber signal. */
+  .bs-hero {
+    --deck-bg: #0d1b24;
+    --deck-bg-2: #142a35;
+    --amber: #f2a93b;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(900px 500px at 85% 20%, rgba(242, 169, 59, 0.12), transparent 60%),
+      linear-gradient(160deg, var(--deck-bg-2), var(--deck-bg) 60%);
+    color: #e9e4d8;
+    padding: 72px 0 72px;
+  }
+  .bs-hero::after {
+    /* faint spectrum ticks along the bottom edge */
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    background: repeating-linear-gradient(90deg, rgba(233, 228, 216, 0.18) 0 1px, transparent 1px 14px);
+  }
+  .bs-hero-inner {
     display: grid;
-    gap: 6px;
-    padding: 28px 32px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: 48px;
+    align-items: center;
+  }
+  .bs-eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(233, 228, 216, 0.7);
+    margin-bottom: 22px;
+  }
+  .bs-pill {
+    background: var(--amber);
+    color: var(--deck-bg);
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .bs-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: #f6f1e5;
+  }
+  .bs-title em { color: var(--amber); font-style: italic; }
+  .bs-sub { font-size: 1.15rem; color: rgba(233, 228, 216, 0.85); margin: 14px 0 6px; }
+  .bs-thanks { color: rgba(233, 228, 216, 0.6); margin-bottom: 30px; }
+  .bs-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .bs-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .bs-btn:hover { transform: translateY(-2px); }
+  .bs-btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  .bs-btn-amber { background: var(--amber); color: var(--deck-bg); }
+  .bs-btn-amber:hover { background: #f7bb5f; color: var(--deck-bg); }
+  .bs-btn-line { border: 1px solid rgba(233, 228, 216, 0.35); color: #f6f1e5; }
+  .bs-btn-line:hover { border-color: var(--amber); color: #f6f1e5; }
+  .bs-cover {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(233, 228, 216, 0.14);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(242, 169, 59, 0.06);
+    transform: perspective(1400px) rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.4s ease;
+  }
+  .bs-cover:hover { transform: none; }
+  .bs-cover:focus-visible { outline: 2px solid var(--amber); outline-offset: 4px; }
+  .bs-cover img { display: block; width: 100%; height: auto; }
+  .bs-freq {
+    position: absolute;
+    right: 24px;
+    bottom: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: rgba(233, 228, 216, 0.4);
+  }
+
+  .bs-section { padding: 80px 0; }
+  .bs-section-alt { background: var(--cream-soft); border-block: 1px solid var(--border); }
+  .bs-h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+    color: var(--navy);
+    letter-spacing: -0.015em;
+    margin-bottom: 32px;
+  }
+
+  .bs-downloads { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .bs-dl {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
     text-decoration: none;
     color: inherit;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .dl-item:hover { border-color: var(--navy); }
-  .dl-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .dl-kicker { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
-  .dl-title { font-family: var(--font-serif); font-weight: 600; font-size: 1.35rem; color: var(--navy); }
-  .dl-meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); }
-  .dl-btn { justify-self: start; margin-top: 12px; }
-  .dl-more { color: var(--text-muted); font-size: 0.95rem; }
-  @media (max-width: 560px) {
-    .dl-item { padding: 24px 20px; }
-    .dl-btn { justify-self: stretch; text-align: center; }
+  .bs-dl:hover { border-color: var(--border-bright); transform: translateY(-3px); box-shadow: 0 18px 40px -24px rgba(22, 35, 63, 0.35); }
+  .bs-dl:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .bs-dl-thumb { aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .bs-dl-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .bs-dl-thumb-wide { background: #0d1b24; }
+  .bs-dl-thumb-paper {
+    background: linear-gradient(160deg, #e9e1cc, #dcd2b8);
+    display: flex;
+    justify-content: center;
+    padding-top: 28px;
+  }
+  .bs-dl-thumb-paper img {
+    width: 62%;
+    height: auto;
+    object-fit: initial;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 10px 30px -8px rgba(22, 35, 63, 0.35);
+    transition: transform 0.3s ease;
+  }
+  .bs-dl:hover .bs-dl-thumb-paper img { transform: translateY(-6px); }
+  .bs-dl-body { display: flex; flex-direction: column; gap: 8px; padding: 26px 28px 28px; }
+  .bs-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .bs-dl-title { font-family: var(--font-serif); font-weight: 600; font-size: 1.35rem; color: var(--navy); line-height: 1.25; }
+  .bs-dl-desc { color: var(--text-muted); font-size: 0.95rem; }
+  .bs-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 14px; }
+  .bs-meta span {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    background: var(--accent-dim);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .bs-dl-btn { align-self: flex-start; margin-top: auto; }
+
+  .bs-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 22px;
+  }
+  .bs-slide a {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-bright);
+    background: #0d1b24;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .bs-slide a:hover { transform: translateY(-3px); box-shadow: 0 16px 34px -20px rgba(13, 27, 36, 0.6); }
+  .bs-slide a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .bs-slide img { display: block; width: 100%; height: auto; }
+  .bs-slide p { margin-top: 12px; color: var(--text); font-size: 0.95rem; line-height: 1.45; }
+  .bs-num { color: var(--accent); font-family: var(--font-mono); font-size: 0.78rem; margin-right: 8px; }
+
+  .bs-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px 48px;
+  }
+  .bs-contact .bs-h2 { margin-bottom: 12px; }
+  .bs-contact-lead { color: var(--text-muted); max-width: 560px; }
+  .bs-contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 900px) {
+    .bs-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .bs-cover { transform: none; }
+    .bs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    .bs-hero { padding: 48px 0 64px; }
+    .bs-cover { display: none; }
+    .bs-downloads { grid-template-columns: 1fr; }
+    .bs-grid { grid-template-columns: 1fr; }
+    .bs-section { padding: 60px 0; }
+    .bs-dl-body { padding: 22px 20px 24px; }
+    .bs-actions .bs-btn, .bs-dl-btn, .bs-contact-links .btn { flex: 1 1 100%; align-self: stretch; text-align: center; }
+    .bs-freq { right: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bs-cover, .bs-btn, .bs-dl, .bs-slide a, .bs-dl-thumb-paper img { transition: none; transform: none !important; }
   }
 </style>

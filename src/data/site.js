@@ -7,7 +7,7 @@ export const profile = {
     "For a decade I've secured systems where failure is physical — surgical robots, industrial control, the RF spectrum — and now I secure the AI being wired into them.",
   intro:
     "A U.S. Marine Corps veteran turned cybersecurity leader. Today I'm Lead Product Security Engineer for the Ottava surgical robotics platform at Johnson & Johnson — after rising through enterprise, OT/ICS, and global supply-chain security roles. I build practical, standards-aligned methods for measuring and reducing cyber risk, and increasingly the AI tooling that makes that work scale.",
-  email: 'ricardo.n.ramirez@outlook.com',
+  email: 'rramir.securityresearch@protonmail.com',
   github: 'https://github.com/rick-rami94',
   githubHandle: 'rick-rami94',
   linkedin: 'https://www.linkedin.com/in/rickramir',
