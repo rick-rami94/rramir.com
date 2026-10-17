@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { profile } from '../data/site.js';
+import { mapSources, checkedOn } from '../data/map-sources.js';
 
 // Landing page linked from the final slide of the BSidesNYC 2026 talk.
 const talk = {
@@ -21,6 +22,20 @@ const highlights = [
   { src: '/bsidesnyc/slide-25.webp', label: '05', caption: 'CVSS vs. context: why the score undersells it.' },
   { src: '/bsidesnyc/slide-35.webp', label: '06', caption: 'RF is part of the attack surface.' },
 ];
+
+// Public-record sample behind the "Cleartext on 915 MHz, Nationwide" map, grouped by meter family.
+const families = [
+  { name: 'Neptune R900', color: '#e0921f' },
+  { name: 'Itron ERT', color: '#2f9e99' },
+  { name: 'Badger ORION', color: '#8b74d6' },
+  { name: 'Landis+Gyr', color: '#4f86c6' },
+].map((f) => ({
+  ...f,
+  records: mapSources
+    .filter((r) => r.family === f.name)
+    .sort((a, b) => a.state.localeCompare(b.state) || a.city.localeCompare(b.city)),
+}));
+const stateCount = new Set(mapSources.map((r) => r.state)).size;
 ---
 
 <Base
@@ -116,7 +131,59 @@ const highlights = [
     </div>
   </section>
 
-  <section class="bs-section">
+  <section class="bs-section" id="sources">
+    <div class="container">
+      <p class="section-label">// sources</p>
+      <h2 class="bs-h2">The public records behind the map</h2>
+      <div class="bs-src-intro">
+        <a class="bs-src-map" href="/bsidesnyc/slide-30.webp" target="_blank" rel="noopener">
+          <img src="/bsidesnyc/slide-30.webp" width="1600" height="900" alt="Slide: Cleartext on 915 MHz, Nationwide. A US map of confirmed meter deployments, color-coded by meter family." loading="lazy" />
+        </a>
+        <div class="bs-src-copy">
+          <p>
+            Every dot on the map is a deployment confirmed from a public record: council agendas and minutes,
+            purchase memos, sole-source justifications and utility program pages.
+          </p>
+          <p>
+            Here is the sample: {mapSources.length} records across {stateCount} states.
+            It is a sample, not a census. The real map is denser.
+          </p>
+          <p class="bs-src-note">
+            Links checked {checkedOn}. City and utility sites move documents around; if a link breaks,
+            the record title and date should find it again.
+          </p>
+          <span class="bs-meta">
+            {families.map((f) => <span><i class="bs-dot" style={`background:${f.color}`}></i>{f.name} · {f.records.length}</span>)}
+          </span>
+        </div>
+      </div>
+
+      <div class="bs-src-groups">
+        {families.filter((f) => f.records.length).map((f) => (
+          <details class="bs-src-group" open>
+            <summary>
+              <i class="bs-dot" style={`background:${f.color}`}></i>
+              <span class="bs-src-fam">{f.name}</span>
+              <span class="bs-src-count">{f.records.length} records</span>
+            </summary>
+            <ul class="bs-src-list">
+              {f.records.map((r) => (
+                <li>
+                  <span class="bs-src-state">{r.state}</span>
+                  <a href={r.url} target="_blank" rel="noopener">
+                    <span class="bs-src-place">{r.utility}</span>
+                    <span class="bs-src-rec">{r.record}{r.date ? ` · ${r.date}` : ''}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bs-section bs-section-alt">
     <div class="container bs-contact">
       <div>
         <h2 class="bs-h2">Keep the conversation going</h2>
@@ -331,6 +398,69 @@ const highlights = [
   .bs-slide p { margin-top: 12px; color: var(--text); font-size: 0.95rem; line-height: 1.45; }
   .bs-num { color: var(--accent); font-family: var(--font-mono); font-size: 0.78rem; margin-right: 8px; }
 
+  .bs-src-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 36px;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .bs-src-map {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-bright);
+    background: #0d1b24;
+  }
+  .bs-src-map:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .bs-src-map img { display: block; width: 100%; height: auto; }
+  .bs-src-copy p { color: var(--text); margin-bottom: 12px; line-height: 1.55; }
+  .bs-src-copy .bs-src-note { color: var(--text-muted); font-size: 0.88rem; }
+  .bs-src-copy .bs-meta { margin-top: 8px; }
+  .bs-dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin-right: 7px;
+    vertical-align: 0;
+    flex: none;
+  }
+
+  .bs-src-groups { columns: 2; column-gap: 24px; }
+  .bs-src-group {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .bs-src-group summary {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 20px;
+    cursor: pointer;
+    list-style: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .bs-src-group summary::-webkit-details-marker { display: none; }
+  .bs-src-group summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .bs-src-fam { font-family: var(--font-serif); font-weight: 600; font-size: 1.15rem; color: var(--navy); }
+  .bs-src-count { margin-left: auto; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); }
+  .bs-src-group:not([open]) summary { border-bottom: none; }
+  .bs-src-list { list-style: none; margin: 0; padding: 6px 0; }
+  .bs-src-list li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px; padding: 9px 20px; }
+  .bs-src-list li + li { border-top: 1px dashed var(--border); }
+  .bs-src-state { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); padding-top: 2px; }
+  .bs-src-list a { display: flex; flex-direction: column; gap: 2px; text-decoration: none; color: inherit; min-width: 0; }
+  .bs-src-place { color: var(--navy); font-weight: 600; font-size: 0.95rem; overflow-wrap: anywhere; }
+  .bs-src-place::after { content: ' ↗'; color: var(--text-muted); font-weight: 400; }
+  .bs-src-list a:hover .bs-src-place { color: var(--accent); }
+  .bs-src-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .bs-src-rec { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; }
+
   .bs-contact {
     display: flex;
     flex-wrap: wrap;
@@ -346,6 +476,8 @@ const highlights = [
     .bs-hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .bs-cover { transform: none; }
     .bs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bs-src-intro { grid-template-columns: 1fr; gap: 24px; }
+    .bs-src-groups { columns: 1; }
   }
   @media (max-width: 640px) {
     .bs-hero { padding: 48px 0 64px; }
